@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thirdparty>
+    <library>
+        <name>ApexCharts</name>
+        <version>3.37.2</version>
+        <license>MIT</license>
+        <licenseurl>https://github.com/apexcharts/apexcharts.js/blob/master/LICENSE</licenseurl>
+        <homepage>https://apexcharts.com/</homepage>
+        <source>https://github.com/apexcharts/apexcharts.js</source>
+    </library>
+
+    <library>
+        <name>Chart.js</name>
+        <version>4.4.0</version>
+        <license>MIT</license>
+        <licenseurl>https://github.com/chartjs/Chart.js/blob/master/LICENSE.md</licenseurl>
+        <homepage>https://www.chartjs.org/</homepage>
+        <source>https://github.com/chartjs/Chart.js</source>
+    </library>
+
+    <library>
+        <name>DataTables</name>
+        <version>1.13.6</version>
+        <license>MIT</license>
+        <licenseurl>https://github.com/DataTables/DataTables/blob/main/license.txt</licenseurl>
+        <homepage>https://datatables.net/</homepage>
+        <source>https://github.com/DataTables/DataTables</source>
+    </library>
+</thirdparty>
