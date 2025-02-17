@@ -26,5 +26,5 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->component = 'local_edudashboard';
 $plugin->release = '1.0';
 $plugin->version = 2024080103;
-$plugin->requires = 2015120300; // Moodle 3.0
+$plugin->requires = 2015120300;
 $plugin->maturity = MATURITY_STABLE;

@@ -20,7 +20,7 @@ EDUdashboard is a powerful plugin for Moodle that provides detailed graphical re
 
 ## Installation
 
-1. Download the latest release.
+1. Download the latest release from [Moodle Plugin Directory](https://moodle.org/plugins/).
 2. Extract the plugin into the `local/edudashboard` directory of your Moodle installation.
 3. Navigate to **Site Administration > Notifications** to complete the installation.
 4. Configure the plugin under **Site Administration > Plugins > EDUdashboard**.
