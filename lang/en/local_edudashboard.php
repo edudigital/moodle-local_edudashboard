@@ -26,6 +26,10 @@ $string['pluginname'] = 'Advanced Dashboard';
 $string['main_name'] = 'Advanced Dashboard';
 $string['sitecompletionreport'] = 'Site Completion Report';
 
+$string['cachedef_admininfos'] = 'Admin information cache';
+$string['cachedef_siteaccess'] = 'Site access cache';
+
+
 // edudashboard
 $string['more_information'] = 'More info';
 $string['active_suspend_users'] = 'Active users / suspended';

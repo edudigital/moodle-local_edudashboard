@@ -26,10 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $definitions = [
     'admininfos' => [
-        'mode' => cache_store::MODE_APPLICATION
+        'mode' => cache_store::MODE_APPLICATION,
     ],
     'siteaccess' => [
         'mode' => cache_store::MODE_APPLICATION,
-        'ttl' => 12 * 60 * 60
-    ]
+        'ttl' => 12 * 60 * 60,
+    ],
 ];
