@@ -23,8 +23,8 @@
  */
 
 
-$string['pluginname'] = 'Dashboard Avançado';
-$string['main_name'] =  $string['pluginname'];
+$string['pluginname'] = 'EduDashboard';
+$string['main_name'] =  'pluginname';
 $string['sitecompletionreport'] = 'Relatório de conclusão global';
 
 
@@ -50,6 +50,7 @@ $string['less_use'] = 'Pouco usado';
 $string['more_use'] = 'Muito usado';
 
 // completionreport
+$string['completionreports'] = 'EDUDashboard - Relatório Avançado';
 $string['completion_report'] = 'Relatório de conclusão (Site)';
 $string['completion_report_without_site'] = 'Relatório de conclusão';
 $string['course_label'] = 'Curso';
@@ -166,7 +167,7 @@ $string['siteaccessinfo'] = 'Média de acessos';
 /* Front page and  Charts */
 $string['configs'] ="Configurações";
 $string['chart_1_name'] = "Insrições";
-$string['chart_1_courses'] = $string['courses'] ;
+$string['chart_1_courses'] ='courses' ;
 $string['chart_1_users'] ="Utilizadores";
 $string['chart_1_maxgrade'] ="Máxmo de notas";
 $string['chart_1_completion'] ="Conclusões";

@@ -37,7 +37,7 @@ function local_edudashboard_extend_navigation_course($navigation, $course, $cont
 			$icon = new pix_icon('i/stats', '');
 
 			$node = $navigation->add(
-				" EDUDashboard - Relatório Avançado",
+				get_string('completionreports', 'local_edudashboard'),
 				new moodle_url($CFG->wwwroot . '/local/edudashboard/coursereport.php', array('id' => $course->id)),
 				navigation_node::TYPE_CUSTOM,
 				'completionreports',

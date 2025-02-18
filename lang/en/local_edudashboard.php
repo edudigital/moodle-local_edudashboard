@@ -53,6 +53,7 @@ $string['less_use'] = 'Little used';
 $string['more_use'] = 'Very used';
 
 // completionreport
+$string['completionreports'] = 'EDUDashboard - Advanced Report';
 $string['completion_report'] = 'Completion report (Website)';
 $string['completion_report_without_site'] = 'Completion report';
 $string['course_label'] = 'Course';
@@ -95,14 +96,14 @@ $string['users_courses_report_conclude'] = 'Completed users';
 $string['max_grade'] = 'Max grade: ';
 $string['avg_grade'] = 'Grade avarage: ';
 $string['top_3_label'] = 'Top 3 - Grade';
-$string['users_registered_on_course'] = $string['users_courses_report'];
+$string['users_registered_on_course'] = 'users_courses_report';
 $string['name_label_course_report'] = 'Name';
 $string['email_label_course_report'] = 'E-mail';
 $string['grade_label_course_report'] = 'Grade';
 $string['course_state_label_course_report'] = 'Completion status';
 $string['progress_label_course_report'] = 'Progress';
-$string['first_login_label_course_report'] = $string['first_access'];
-$string['last_login_label_course_report'] = $string['last_access'];
+$string['first_login_label_course_report'] = 'first_access';
+$string['last_login_label_course_report'] = 'last_access';
 $string['time_spend_label_course_report'] = 'Time spent';
 $string['registered_label_course_report'] = 'Enrollment';
 $string['state_label_course_report'] = 'Status';
@@ -166,23 +167,24 @@ $string['saturday'] = 'Saturday';
 $string['siteaccessinfo'] = 'Avg users access';
 /* End Site Access Block*/
 
-/* Front page and  Charts */
-$string['configs'] ="Configuration";
-$string['chart_1_name'] = "Enrollments";
-$string['chart_1_courses'] = $string['courses'] ;
-$string['chart_1_users'] ="Users";
-$string['chart_1_maxgrade'] ="Max grade";
-$string['chart_1_completion'] ="Completed";
-$string['chart_1_value'] ="Value";
-$string['chart_1_avgrade'] ="Grade avarage";
-$string['chart_2_name'] ="Outcome report";
-$string['chart_2_name2'] ="Distribution of grades for the platform’s courses";
-$string['chart_3_name'] ="Space occupied by course";
-$string['chart_3_size'] ="Size (MB)";
-$string['chart_3_activities'] ="Activities/Resources";
-$string['chart_3_label1'] ="Occupied space";
-$string['chart_4_ocupede'] ="Occupied";
-$string['never'] ="Never";
+/* Front page and Charts */
+$string['configs'] = 'Configuration';
+$string['chart_1_name'] = 'Enrollments';
+$string['chart_1_courses'] = 'Courses'; 
+$string['chart_1_users'] = 'Users';
+$string['chart_1_maxgrade'] = 'Max grade';
+$string['chart_1_completion'] = 'Completed';
+$string['chart_1_value'] = 'Value';
+$string['chart_1_avgrade'] = 'Grade average'; 
+$string['chart_2_name'] = 'Outcome report';
+$string['chart_2_name2'] = 'Distribution of grades for the platform’s courses';
+$string['chart_3_name'] = 'Space occupied by course';
+$string['chart_3_size'] = 'Size (MB)';
+$string['chart_3_activities'] = 'Activities/Resources';
+$string['chart_3_label1'] = 'Occupied space';
+$string['chart_4_ocupede'] = 'Occupied';
+$string['never'] = 'Never';
+
 
 $string['selectedcourse'] ="Selected course";
 $string['fromdate'] ="From: ";

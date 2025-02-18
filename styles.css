@@ -224,6 +224,26 @@ figure{
     margin-left: -15px;
 }
 
+.premium-notification {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.premium-button {
+  background-color: #5cb85c;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.premium-button:hover {
+  background-color: #5cb85c;
+}
+
+
 
 
 
