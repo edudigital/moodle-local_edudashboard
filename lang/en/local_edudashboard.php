@@ -22,9 +22,10 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Advanced Dashboard';
-$string['main_name'] = 'Advanced Dashboard';
+$string['pluginname'] = 'Edudashboard';
+$string['main_name'] = 'Edudashboard';
 $string['sitecompletionreport'] = 'Site Completion Report';
+$string['edudashboard:view'] = 'View EduDashboard';
 
 $string['cachedef_admininfos'] = 'Admin information cache';
 $string['cachedef_siteaccess'] = 'Site access cache';
