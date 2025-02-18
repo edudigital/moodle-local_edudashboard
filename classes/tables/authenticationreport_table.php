@@ -22,31 +22,36 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_edudashboard\tables; 
+ defined('MOODLE_INTERNAL') || die;
 
-defined('MOODLE_INTERNAL') || die;
-
-class authenticationreport_table extends \table_sql{
-
+ class authenticationreport_table extends \table_sql {
+ 
      /**
      * Constructor
      * @param int $uniqueid all tables have to have a unique id, this is used
      *      as a key when storing table properties like sort order in the session.
      */
-    function __construct($uniqueid) {
-        parent::__construct($uniqueid);
-        // Define the list of columns to show.
-        $columns = array('id', 'lastaccess','lastip');
-        $this->define_columns($columns);
-
-        // Define the titles of columns to show in header.
-        $headers = array('Utilizador', 'Data e Hora','Endereço IP');
-        $this->define_headers($headers);
-        $this->collapsible(true);
-        $this->sortable(true);
-        $this->pageable(true);
-        $this->show_download_buttons_at(array(TABLE_P_BOTTOM));
-    }
+     function __construct($uniqueid) {
+         parent::__construct($uniqueid);
+ 
+         // Define the list of columns to show.
+         $columns = array('id', 'lastaccess', 'lastip');
+         $this->define_columns($columns);
+ 
+         // Define the titles of columns to show in header.
+         $headers = array(
+             get_string('column_user', 'local_edudashboard'),
+             get_string('column_datetime', 'local_edudashboard'),
+             get_string('column_ip', 'local_edudashboard')
+         );
+         $this->define_headers($headers);
+         
+         $this->collapsible(true);
+         $this->sortable(true);
+         $this->pageable(true);
+         $this->show_download_buttons_at(array(TABLE_P_BOTTOM));
+     }
+ 
 
     /**
      * This function is called for each data row to allow processing of the

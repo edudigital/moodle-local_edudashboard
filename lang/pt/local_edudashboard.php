@@ -105,6 +105,7 @@ $string['time_spend_label_course_report'] = 'Tempo gasto';
 $string['registered_label_course_report'] = 'Inscrição';
 $string['state_label_course_report'] = 'Estado';
 $string['to_be_conclude'] = 'Por concluir';
+$string['edudashboard_course_report'] = 'EDUDashboard: Relatórios de cursos';
 
 // userdossie
 $string['user_dossie'] = 'Dossie de utilizador';
@@ -217,5 +218,13 @@ $string['downloadjpeg'] = 'Baixar imagem JPEG';
 $string['downloadpdf'] = 'Baixar documento PDF';
 $string['downloadsvg'] = 'Baixar imagem vetorial SVG';
 $string['contextbuttontitle'] = 'Menu de contexto do gráfico';
+
+//authenticationreport
+$string['column_user'] = 'Utilizador';
+$string['column_datetime'] = 'Data e Hora';
+$string['column_ip'] = 'Endereço IP';
+
+$string['learnobject'] = 'Tipo de objecto de aprendizagem';
+
 
 /* Site Access Block*/

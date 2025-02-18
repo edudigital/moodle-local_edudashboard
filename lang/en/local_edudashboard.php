@@ -108,6 +108,7 @@ $string['time_spend_label_course_report'] = 'Time spent';
 $string['registered_label_course_report'] = 'Enrollment';
 $string['state_label_course_report'] = 'Status';
 $string['to_be_conclude'] = 'To be completed';
+$string['edudashboard_course_report'] = 'EDUDashboard: Course Report';
 
 // userdossie
 $string['user_dossie'] = 'User Dossie';
@@ -223,6 +224,22 @@ $string['downloadPDF'] = 'Download PDF document';
 $string['downloadSVG'] = 'Download SVG vector image';
 $string['contextButtonTitle'] = 'Chart context menu';
 
-/* Site Access Block*/
+//settings
+$string['pluginname'] = 'EDUDashboard';
+$string['show_hidden_categories'] = 'Report Block: Show Hidden Categories';
+$string['show_admin_courses'] = 'EDUDashboard Main Page: Show Admin Courses';
+$string['show_admin_reports'] = 'EDUDashboard Main Page: Show Admin Reports';
+$string['maxdiskocupation'] = 'Disk: Max size (GB)';
+$string['maxdiskocupation_help'] = 'This value is used to calculate the disk usage in report. <b><br>0</b> means no max size';
+
+//authentication
+$string['column_user'] = 'User';
+$string['column_datetime'] = 'Date and Time';
+$string['column_ip'] = 'IP Address';
+
+$string['learnobject'] = 'Learning object type';
+
+
 
 /* Site Access Block*/
+

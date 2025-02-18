@@ -85,7 +85,7 @@ function local_edudashboard_extend_navigation(global_navigation $navigation)
 			$icon = new pix_icon('i/stats', '');
 
 			$node = $navigation->add(
-				"EDUDashboard: Course Report",
+				get_string('edudashboard_course_report', 'local_edudashboard'),
 				new moodle_url($CFG->wwwroot . '/local/edudashboard/coursereport.php', array('id' => $COURSE->id)),
 				navigation_node::TYPE_CUSTOM,
 				'completionreports',

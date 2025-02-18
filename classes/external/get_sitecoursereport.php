@@ -47,7 +47,7 @@ trait get_sitecoursereport {
     public static function get_sitecoursereport_parameters() {
         return new \external_function_parameters(
             array (
-                'learnobject' => new \external_value(PARAM_INT, 'Tipo de objecto de aprendizagem'),
+                'learnobject' => new \external_value(PARAM_INT, get_string('learnobject', 'local_edudashboard')),
             )
         );
     }
