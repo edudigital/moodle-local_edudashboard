@@ -29,12 +29,6 @@ require_once('classes/output/renderable.php');
 
 global $OUTPUT;
 
-// Strings for js.
-//local_edudashboard_get_required_strings_for_js();
-
-// Load color themes from constants.
-//local_edudashboard\utility::load_color_pallets();
-
 // Set external page admin.
 $context = context_system::instance();
 $component = "local_edudashboard";
@@ -52,10 +46,7 @@ if ($edit !== false) {
 $reset = optional_param('reset', false, PARAM_BOOL);
 if ($reset !== false) {
     $USER->editing = false;
-    //reset_edwiserreports_page_default();
 }
-
-
 
 // Page URL.
 $pageurl = new moodle_url($CFG->wwwroot . "/local/edudashboard/index.php");
@@ -72,8 +63,6 @@ foreach (scandir($CFG->dirroot . '/local/edudashboard/externaljs/build/') as $fi
 // Require JS for index page.
 $PAGE->requires->js_call_amd('local_edudashboard/main', 'init');
 
-// Require CSS for index page.
-//$PAGE->requires->css('/local/edwiserreports/styles/edwiserreports.min.css');
 
 // Set page context.
 $PAGE->set_context($context);
@@ -85,11 +74,6 @@ $PAGE->set_url($pageurl);
 $PAGE->set_pagelayout('standard');
 // Add theme class to body.
 $PAGE->add_body_classes(array('theme_' . $PAGE->theme->name));
-
-/* Get renderable.
-$renderable = new \local_edudashboard\output\edwiserreports_renderable();
-$output = $PAGE->get_renderer($component)->render($renderable);
-*/
 
 foreach (scandir($CFG->dirroot . '/local/edudashboard/externaljs/build/apexchart') as $file1) {
     if (pathinfo($file1, PATHINFO_EXTENSION) != 'js') {
