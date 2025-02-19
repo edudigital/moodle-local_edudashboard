@@ -309,13 +309,11 @@ class siteoverview_renderable implements renderable, templatable
 
         }
 
-        //$categorias = \local_edudashboard\extra\util::categoria_fulldata();
-
 
 
         foreach ($categorias as $categoria) {
 
-            //print_object($categoria);
+
 
             $serie->data[] = array('name' => $categoria->name, 'subject' => get_string('courses1', 'local_edudashboard'), 'y' => $categoria->courses, 'drilldown' => $categoria->courses > 0 ? $categoria->name : 0);
             if (isset($categoria->arrayusers)) {
@@ -363,6 +361,10 @@ class sitecompletion_renderable implements renderable, templatable
     {
         global $CFG, $OUTPUT, $PAGE;
         require_once($CFG->dirroot . '/local/edudashboard/classes/form/selectcourse_form.php');
+        require_once($CFG->dirroot . '/local/edudashboard/forms/siteloginfilter_form.php');
+        require_once($CFG->dirroot . '/local/edudashboard/forms/siteaccess_form.php');
+        require_once($CFG->dirroot . '/local/edudashboard/forms/courseorprogram_form.php');
+
 
         $sort = optional_param('sort', '', PARAM_TEXT);
         $learningobject = optional_param('lb', -1, PARAM_INT);
@@ -373,7 +375,7 @@ class sitecompletion_renderable implements renderable, templatable
             if ($learningobject == 0) {
                 list($output->courses, $output->total_enrollemnts, $output->global_completion_percentage, $output->total_completed, $output->global_size) = course_report::getSitecoursesCompletion();
             } elseif ($learningobject == 1) {
-               // list($output->courses, $output->total_enrollemnts, $output->global_completion_percentage, $output->total_completed, $output->global_size) = course_report::getSiteProgramsCompletion();
+              
             }
            
             $mform = new courseorprogram_form();
@@ -394,7 +396,7 @@ class sitecompletion_renderable implements renderable, templatable
                 } else
                     return intval(((array) $b)[$sort]) > intval(((array) $a)[$sort]);
 
-            }); // course_report::array_sort($output->courses,$sort,SORT_ASC);
+            }); 
         }
 
         // strigns
@@ -457,17 +459,7 @@ class sitecompletion_renderable implements renderable, templatable
                 "hoverBorderColor" => "#47a6ff",
                 "data" => $data_concluido,
             ),
-           /* array(
-                "type" => "line",
-                "label" => get_string('conclusion_percentage_label', 'local_edudashboard'),
-                "backgroundColor" => "#f5365c",
-                "borderColor" => "#f5365c",
-                "borderWidth" => 2,
-                "hoverBackgroundColor" => ("Utils.transparentize(Utils.CHART_COLORS.red, 0.5)"),
-                "hoverBorderColor" => "#47a6ff",
-                "data" => $data_p_concluido,
-            ),*/
-
+         
         ];
 
         return array($labels, $dataset);
@@ -491,7 +483,7 @@ class coursessize_renderable implements renderable, templatable
         $data_chart_info = new stdClass();
 
         $data_chart_info->charttitle = get_string('chart_3_name', 'local_edudashboard');;
-        //$data_chart_info->chartsubtitle = "Distribuição de notas por curso";
+       
         $data_chart_info->chartyleftAxistitle = get_string('chart_3_size', 'local_edudashboard');;
 
         $data_chart_info->chartyrighttAxistitle = get_string('chart_3_activities', 'local_edudashboard');;
@@ -532,7 +524,6 @@ class coursessize_renderable implements renderable, templatable
 
         $courses_size = course_report::getCoursesFilesSize();
 
-        // print_object($courses);
 
         foreach ($courses as $course) {
             $cats_name[] = $course->fullname;
