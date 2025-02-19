@@ -313,7 +313,10 @@ class util
     $response->courses_conclusio_label = get_string('courses_conclusion', 'local_edudashboard');
 
     // today's users
-    $todaysusers = get_users(true, '', false, null, "", '', '', '', '', 'id,firstname,lastname,email,lastaccess', "lastaccess >= :todaysdate", ["todaysdate" => strtotime("today")]);
+    $params = ['todaysdate' => strtotime("today")];
+    $todaysusers = get_users(true, '', false, null, "", '', '', '', '', 
+    'id, firstname, lastname, email, lastaccess', 
+    "lastaccess >= :todaysdate", $params);
     $response->todaysusers = siteaccess::counttodaysusers(); //sizeof($todaysusers);
     $response->todaysusers_array = $todaysusers;
     $response->authentications_today_label = get_string('authentications_today', 'local_edudashboard');
@@ -348,9 +351,14 @@ class util
       $mds = get_course_mods($course->id);
 
       foreach ($mds as $mod) {
-        $sql2 = "SELECT * FROM {context} WHERE instanceid = $mod->id";
+        $sql2 = "SELECT * FROM {context} WHERE instanceid = :instanceid";
+        $params = ['instanceid' => $mod->id];
+        $records = $DB->get_records_sql($sql2, $params);
+
         $id = \context_module::instance($mod->id)->id;
-        $sql = "SELECT sum(filesize) as course_size FROM {files} WHERE contextid = " . $id . " and status=0";
+        $sql = "SELECT sum(filesize) as course_size FROM {files} WHERE contextid = :contextid AND status = 0";
+        $params = ['contextid' => $id];
+        $result = $DB->get_record_sql($sql, $params);
         $result1 += round($DB->get_record_sql($sql)->course_size / (1024 * 1024), 2);
       }
 
@@ -379,9 +387,12 @@ class util
     }
 
     // Query to retrive any users who are registered on the program
-    $sql = "SELECT id,firstname,lastname,email FROM {user} WHERE id IN
-          (SELECT DISTINCT userid FROM {prog_completion}
-          WHERE coursesetid = 0 AND programid = ? {$statussql})";
+    $sql = "SELECT id, firstname, lastname, email FROM {user} WHERE id IN
+    (SELECT DISTINCT userid FROM {prog_completion}
+    WHERE coursesetid = 0 AND programid = :programid {$statussql})";
+    $params = array_merge(['programid' => $progid], $statusparams);
+    $users = $DB->get_records_sql($sql, $params);
+
     $params = array_merge(array($progid), $statusparams);
 
     return $DB->get_records_sql($sql, $params);

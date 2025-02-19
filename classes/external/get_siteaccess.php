@@ -144,10 +144,18 @@ trait get_siteaccess
         }
 
         // SQL to get access info log.
-        $extra = $courseid!=0?" and courseid = $courseid ":'';
-        $sql = "SELECT id, action,courseid, timecreated
+        $extra = $courseid != 0 ? " AND courseid = :courseid" : "";
+        $sql = "SELECT id, action, courseid, timecreated
             FROM {logstore_standard_log}
-            WHERE  timecreated >= :timecreated and courseid > 1  $extra";
+            WHERE timecreated >= :timecreated AND courseid > 1 $extra";
+        $params = ['timecreated' => $timecreated];
+        
+        if ($courseid != 0) {
+            $params['courseid'] = $courseid;
+        }
+        
+        $records = $DB->get_records_sql($sql, $params);
+        
 
         $sql2 = "SELECT id, action,courseid, timecreated
             FROM {logstore_standard_log}
