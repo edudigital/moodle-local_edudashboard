@@ -77,7 +77,7 @@ trait get_sitecoursereport {
               $progs[$key]->learners = $res;  
               
             }
-           // print_object(prog_get_courses_associated_with_programs());
+     
           }
     
         return array('learnobject' =>$progs);

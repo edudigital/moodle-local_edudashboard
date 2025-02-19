@@ -206,17 +206,6 @@ trait get_siteaccess
         }
     }
 
-        /*$siteloging = new stdClass();
-
-        $loggin = get_config('local_edudashboard', 'siteaccesslogin');
-
-        if ($loggin && $loggin = json_decode($loggin, true)) {
-
-            foreach ($loggin as $key => $value) {
-                   $siteloging->series[] = $key;
-                   $siteloging->data[] = $value;
-            }
-        }*/
 
       
         return array('login' => \json_encode(site_access_data::site_complete_login($from,$to,$courseid)), 'data' => \json_encode($siteaccess));

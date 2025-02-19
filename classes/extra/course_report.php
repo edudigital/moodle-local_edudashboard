@@ -26,10 +26,8 @@ namespace local_edudashboard\extra;
 
 defined('MOODLE_INTERNAL') || die();
 
-use stdClass;
 use context_course;
-use completion_completion;
-use \DateTime;
+
 
 global $CFG;
 require_once($CFG->libdir . "/completionlib.php");
@@ -83,11 +81,7 @@ class course_report
     public static function getSitecoursesCompletion()
     {
 
-        global $PAGE, $CFG, $DB;
-
         $courses = self::getSiteCourses(array(), false);
-
-        // print_object($courses);
 
         $courses_size = course_report::getCoursesFilesSize();
 

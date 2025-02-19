@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
  * Adding "Advanced Dashboard" Menu Link To sidebar
  * @param navigation_node $nav navigation node
  */
-function local_edudashboard_extend_navigation_course($navigation, $course, $context)
+function local_edudashboard_extend_navigation_course($navigation, $course)
 {
 	global $CFG;
 
@@ -55,14 +55,14 @@ function local_edudashboard_extend_navigation_user_settings($navigation, $course
 
 function local_edudashboard_extend_navigation(global_navigation $navigation)
 {
-	global $PAGE, $COURSE, $CFG;
+	global $COURSE, $CFG;
 
 	$systemcontext = context_system::instance();
 
 	if (has_capability('local/edudashboard:view', $systemcontext)) {
 
 		$url = new moodle_url('/local/edudashboard/index.php');
-		// secho "<br><br><br><h1>Teste</h1>";
+
 		$node = navigation_node::create(get_string('main_name', 'local_edudashboard'), $url, navigation_node::TYPE_CUSTOM, get_string('main_name', 'local_edudashboard'), 'advanceddashboard', new pix_icon('i/report', ''));
 
 		$node->showinflatnavigation = true;

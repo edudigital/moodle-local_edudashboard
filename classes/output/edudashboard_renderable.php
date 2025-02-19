@@ -32,7 +32,6 @@ use renderer_base;
 use stdClass;
 use templatable;
 use local_edudashboard\extra\util;
-use local_edudashboard\extra\user_report;
 use local_edudashboard\extra\course_report;
 use context_system;
 
@@ -50,7 +49,6 @@ class edudashboard_renderable implements renderable, templatable
         global $CFG, $PAGE, $USER, $DB;
 
         $component = "local_edudashboard";
-        $output = null;
         $export = new stdClass();
         $context = context_system::instance();
 

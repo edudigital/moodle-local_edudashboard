@@ -27,7 +27,6 @@ namespace local_edudashboard\extra;
 defined('MOODLE_INTERNAL') || die();
 
 use stdClass;
-use completion_info;
 use context_course;
 
 global $CFG;
@@ -113,7 +112,7 @@ class util
     $courseset = \gradereport_overview_external::get_course_grades($user_id);
 
     foreach ($courseset['grades'] as $course) {
-      //print_r($course);
+ 
       $course_n = $DB->get_record('course', ['id' => intval($course['courseid'])], "fullname,category");
 
       if ($course_n->category === $category_id) {
@@ -142,7 +141,7 @@ class util
     //Mthod not in use
     global $DB, $USER;
 
-    $show_hidden = get_config('local_edudashboard', 'show_hidden_categories'); //Apenas categorias visíveis
+    $show_hidden = get_config('local_edudashboard', 'show_hidden_categories'); // only cathegories
 
     $category = $DB->get_records('course_categories', $show_hidden == 0 ? ['visible' => 1, 'visibleold' => 1] : null, " name ASC", "id,visible,name");
 
@@ -162,7 +161,7 @@ class util
         foreach ($users as $user) {
 
           if (intval($user->id) !== 1) {
-            //$res = \local_edudashboard\extra\util::grade_oncategory($user->id, $categoria->id);
+       
             $usergrade = \grade_get_course_grade($user->id, $course->id);
             $grade = round($usergrade->grade, 2);
 
@@ -177,17 +176,15 @@ class util
             }
 
 
-            //$courseobj = new \core_course_list_element($course);
-
             $completion = new \completion_info($course);
 
             // First, let's make sure completion is enabled.
             if ($completion->is_enabled()) {
-              //$percentage = \core_completion\progress::get_course_progress_percentage($course, $user->id);
+              
               $course->completed = $completion->is_course_complete($user->id);
 
               $user->course_completed = $course->completed;
-              //$course->progress  = $percentage;
+             
               if ($course->completed)
                 $conclusoes += 1;
             }
@@ -197,7 +194,7 @@ class util
           }
         }
         $category[$key]->arrayusers[$course->fullname] = $useres;
-        //print_object($category[$key]);   
+     
       }
 
 
@@ -214,11 +211,6 @@ class util
 
       $category[$key]->maxgrade = $max;
 
-
-
-      //count_enrolled_users(context_course::instance($categoria->id));   
-      //print_object(\user_get_user_details($DB->get_record('user', ['id' => 3]),null,['fullname','enrolledcourses','roles']));
-      //print_object(\user_get_user_details_courses($DB->get_record('user', ['id' => 3]),null,['fullname','enrolledcourses']));
     }
     return $category;
   }
@@ -252,15 +244,15 @@ class util
 
           if (intval($user->id) !== 1) {
 
-            // $courseobj = new \core_course_list_element($course);
+  
 
             $completion = new \completion_info($course);
 
             // First, let's make sure completion is enabled.
             if ($completion->is_enabled()) {
-              // $percentage = \core_completion\progress::get_course_progress_percentage($course, $user->id);
+           
               $course->completed = $completion->is_course_complete($user->id);
-              //$course->progress  = $percentage;
+         
               if ($course->completed)
                 $conclusoes += 1;
             }
@@ -337,7 +329,7 @@ class util
 
     list($insql, $inparams) = $DB->get_in_or_equal($file_times_mimetype, SQL_PARAMS_QM, null);
 
-    //$sql = "SELECT sum(filesize) as size FROM {files} WHERE mimetype $insql and status=0";
+
 
     $sql = "SELECT sum(filesize) as size FROM {files} WHERE status=0";
 
@@ -411,10 +403,6 @@ class util
     } else {
       return $day . "/" . $month . "/" . $ano;
     }
-
-    /*foreach ($result as  $value) {
-        $DB->update_record("edudigitalkeyassessment_template", $value, $bulk = false);
-      }*/
 
   }
 

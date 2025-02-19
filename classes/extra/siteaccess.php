@@ -25,7 +25,7 @@ namespace local_edudashboard\extra;
 
 defined('MOODLE_INTERNAL') || die();
 
-use stdClass;  
+ 
 global $CFG;
 
 

@@ -38,7 +38,7 @@ class selectcourse_form extends \moodleform
 
     public function definition()
     {
-        global $CFG, $DB, $PAGE;
+        global $CFG;
 
         $courseid = optional_param('id', 0, PARAM_INT);
 
@@ -56,8 +56,7 @@ class selectcourse_form extends \moodleform
 
         }
 
-        $action = $CFG->wwwroot;
-        //print_object($action);
+     
         $select = $mform->addElement('select', 'courses', get_string('selectedcourse', 'local_edudashboard'), $options, array("id" => "course_select"));
         // This will select the colour blue.
         $select->setSelected(intval($courseid));
@@ -70,7 +69,7 @@ class selectcourse_form extends \moodleform
 
     }
     //Custom validation should be added here
-    function validation($data, $files)
+    function validation()
     {
         return array();
     }
@@ -82,7 +81,7 @@ class siteloginfilter_form extends \moodleform
 
     public function definition()
     {
-        global $CFG, $DB, $PAGE;
+        global $CFG ;
 
         $mform = $this->_form; // Don't forget the underscore!
  
@@ -96,13 +95,13 @@ class siteloginfilter_form extends \moodleform
             'optional' => true
         ), array("id" => "login_timeto"));
         
-         $this->add_action_buttons($cancel = false, $submitlabel= get_string('tofilter', 'local_edudashboard')); 
+         $this->add_action_buttons(); 
       
         $mform->disable_form_change_checker();
 
     }
     //Custom validation should be added here
-    function validation($data, $files)
+    function validation()
     {
         return array();
     }
@@ -113,7 +112,7 @@ class siteaccess_form extends \moodleform
 
     public function definition()
     {
-        global $CFG, $DB, $PAGE;
+        global $CFG;
 
         $courseid = optional_param('id', 1, PARAM_INT);
 
@@ -136,8 +135,7 @@ class siteaccess_form extends \moodleform
 
         }
 
-        $action = $CFG->wwwroot;
-        //print_object($action);
+    
         $select = $mform->addElement('select', 'courses', get_string('selectedcourse', 'local_edudashboard'), $options, array("id" => "course_select"));
 
         $mform->addElement('date_selector', 'fromdate', get_string('fromdate', 'local_edudashboard'), array(
@@ -153,15 +151,12 @@ class siteaccess_form extends \moodleform
 
         $mform->addElement('button', 'intro',  get_string('tofilter', 'local_edudashboard'), array("id"=>"access_filter"));
 
-        /*$mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
-
-        $this->add_action_buttons(false, "Actualizar");*/
 
         $mform->disable_form_change_checker();
 
     }
     //Custom validation should be added here
-    function validation($data, $files)
+    function validation()
     {
         return array();
     }
@@ -173,7 +168,6 @@ class courseorprogram_form extends \moodleform
 
     public function definition()
     {
-        global $CFG, $DB, $PAGE;
 
         $learningobject = optional_param('lb', 0, PARAM_INT);
 
@@ -183,21 +177,16 @@ class courseorprogram_form extends \moodleform
 
         $options[1] = get_string('program', 'local_edudashboard');;
 
-        // $action = $CFG->wwwroot;
-        //print_object($action);
         $select = $mform->addElement('select', 'learningobject', get_string('learningobject', 'local_edudashboard'), $options, array("id" => "learningobject_select"));
         // This will select the colour blue.
         $select->setSelected($learningobject);
 
-        /*$mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
-
-        $this->add_action_buttons(false, "Actualizar");*/
 
         $mform->disable_form_change_checker();
 
     }
     //Custom validation should be added here
-    function validation($data, $files)
+    function validation()
     {
         return array();
     }

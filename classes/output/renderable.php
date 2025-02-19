@@ -30,18 +30,13 @@ use renderable;
 use renderer_base;
 use stdClass;
 use templatable;
-use local_edudashboard\extra\user_report;
 use local_edudashboard\extra\course_report;
-use local_edudashboard\extra\siteaccess;
 use local_edudashboard\extra\util;
 
 
 require_once("$CFG->libdir/tablelib.php");
 require_once("$CFG->libdir/blocklib.php");
 
-
-
-//require_once($CFG->dirroot . '/local/edudashboard/classes/output/categoriesoverview_renderable.php');
 
 class categoriesoverview_renderable implements renderable, templatable
 {
@@ -84,13 +79,10 @@ class categoriesoverview_renderable implements renderable, templatable
 
     private function getDataToChart($apexchart = false)
     {
-        global $USER;
 
         $data = new stdClass();
 
         $cats_name = [];
-
-        $cats_nota = [];
 
         $dtas = [];
 
@@ -297,7 +289,6 @@ class siteoverview_renderable implements renderable, templatable
 
     private function getDataToChart()
     {
-        global $USER;
 
         $data = new stdClass();
 
@@ -524,7 +515,6 @@ class coursessize_renderable implements renderable, templatable
 
     private function getDataToChart($uid, $apexchart = false)
     {
-        global $USER, $DB;
 
         $data = new stdClass();
 

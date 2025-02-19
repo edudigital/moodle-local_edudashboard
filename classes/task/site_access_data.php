@@ -99,9 +99,9 @@ class site_access_data extends \core\task\scheduled_task
     public static function categoria_fulldata()
     {
 
-        global $DB, $USER;
+        global $DB;
 
-        $show_hidden = get_config('local_edudashboard', 'show_hidden_categories'); //Apenas categorias visíveis
+        $show_hidden = get_config('local_edudashboard', 'show_hidden_categories'); //only cathegories
 
         $category = $DB->get_records('course_categories', $show_hidden == 0 ? ['visible' => 1, 'visibleold' => 1] : null, " name ASC", "id,visible,name");
 
@@ -156,7 +156,7 @@ class site_access_data extends \core\task\scheduled_task
                     }
                 }
                 $category[$key]->arrayusers[$course->fullname] = $useres;
-                //print_object($category[$key]);   
+                
             }
 
 
@@ -176,10 +176,6 @@ class site_access_data extends \core\task\scheduled_task
 
             util::admin_fast_report();
 
-            //count_enrolled_users(context_course::instance($categoria->id));   
-            //print_object(\user_get_user_details($DB->get_record('user', ['id' => 3]),null,['fullname','enrolledcourses','roles']));
-            //print_object(\user_get_user_details_courses($DB->get_record('user', ['id' => 3]),null,['fullname','enrolledcourses']));
-            
         }
         return $category;
     }
