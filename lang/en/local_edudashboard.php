@@ -43,8 +43,8 @@ $string['exportto'] = 'Export data to';
 
 
 // authenticationreport
-$string['authentication_report'] = 'Authentication Report';
-$string['authentication_title'] = 'Authentication Report';
+$string['authentication_report'] = 'Authentication report';
+$string['authentication_title'] = 'Authentication report';
 $string['user_label'] = 'User';
 $string['login_label'] = 'Login';
 $string['ip_label'] = 'IP';
@@ -233,8 +233,8 @@ $string['maxdiskocupation'] = 'Disk: Max size (GB)';
 $string['maxdiskocupation_help'] = 'This value is used to calculate the disk usage in report. <b><br>0</b> means no max size';
 
 //authentication
-$string['authentication_report'] = 'Authentication Report';
-$string['authentication_report_title'] = 'Authentication Report';
+$string['authentication_report'] = 'Authentication report';
+$string['authentication_report_title'] = 'Authentication report';
 $string['authentication_report_description'] = 'This report provides details about users accessing the platform, including login times and IP addresses.';
 $string['authentication_report_features'] = 'Report Features:';
 $string['authentication_report_feature_users'] = 'List of authenticated users';

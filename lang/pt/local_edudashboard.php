@@ -40,7 +40,7 @@ $string['exportto'] = 'Exportar dados para';
 
 
 // authenticationreport
-$string['authentication_report'] = 'Authentication Report';
+$string['authentication_report'] = 'Authentication report';
 $string['authentication_title'] = 'Relatório de autenticação';
 $string['user_label'] = 'Utilizador';
 $string['login_label'] = 'Login';
@@ -217,7 +217,7 @@ $string['maxdiskocupation'] = 'Disco: Tamanho Máximo (GB)';
 $string['maxdiskocupation_help'] = 'Este valor é usado para calcular a utilização do disco no relatório. <b><br>0</b> significa sem limite de tamanho.';
 
 //authenticationreport
-$string['authentication_report'] = 'Relatório de Autenticação';
+$string['authentication_report'] = 'Relatório de autenticação';
 $string['authentication_report_title'] = 'Relatório de Autenticação';
 $string['authentication_report_description'] = 'Este relatório fornece detalhes sobre os usuários que acessaram a plataforma, incluindo horários de login e endereços IP.';
 $string['authentication_report_features'] = 'Funcionalidades do Relatório:';
@@ -230,7 +230,7 @@ $string['premium_notification'] =
 $string['upgrade_premium'] = 'Atualize para Premium 🚀';
 
 //coursereport
-$string['coursereport'] = 'Relatório do Curso';
+$string['coursereport'] = 'Relatório do curso';
 $string['report_content'] = 'Este recurso está disponível apenas na versão premium do Edudashboard.';
 $string['course_report_description'] = 'Este relatório fornece uma visão geral das inscrições, conclusões e acompanhamento do progresso dos cursos.';
 $string['course_report_features'] = 'Funcionalidades do Relatório:';
