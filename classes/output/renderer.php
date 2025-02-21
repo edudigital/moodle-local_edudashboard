@@ -68,9 +68,10 @@ class local_edudashboard_renderer extends plugin_renderer_base {
         return $this->render_from_template('local_edudashboard/userreport', $templatecontext);
     }
 
-    public function render_coursereport(\local_edudashboard\output\coursereport_renderable $report) {
+    public function render_pagesreport(\local_edudashboard\output\pagesreport_renderable $report) {
         $templatecontext = $report->export_for_template($this);
-        return $this->render_from_template('local_edudashboard/coursereport', $templatecontext);
+        $template_name = $report->report_type === 'authentication' ? 'authenticationreport' : 'coursereport';
+        return $this->render_from_template("local_edudashboard/$template_name", $templatecontext);        
     }
 
     public function render_usergradeavg(\local_edudashboard\output\usergradeavg_renderable $report) {
@@ -88,4 +89,6 @@ class local_edudashboard_renderer extends plugin_renderer_base {
         return $this->render_from_template('local_edudashboard/coursessize', $templatecontext);
     }
 
+
 }
+

@@ -26,73 +26,45 @@ defined('MOODLE_INTERNAL') || die();
  * Adding "Advanced Dashboard" Menu Link To sidebar
  * @param navigation_node $nav navigation node
  */
+
 function local_edudashboard_extend_navigation_course($navigation, $course)
 {
-	global $CFG;
+    global $CFG;
 
-	if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
-		if ($course->id != 1) {
-			// code...
+    if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
+        // Adiciona o link no menu do curso
+        $icon = new pix_icon('i/stats', '');
 
-			$icon = new pix_icon('i/stats', '');
-
-			$node = $navigation->add(
-				get_string('completionreports', 'local_edudashboard'),
-				new moodle_url($CFG->wwwroot . '/local/edudashboard/coursereport.php', array('id' => $course->id)),
-				navigation_node::TYPE_CUSTOM,
-				'completionreports',
-				'completionreports',
-				$icon
-			);
-			$node->showinflatnavigation = true;
-		}
-	}
-}
-function local_edudashboard_extend_navigation_user_settings($navigation, $course, $context)
-{
-
+        $node = $navigation->add(
+            get_string('completionreports', 'local_edudashboard'),
+            new moodle_url($CFG->wwwroot . '/local/edudashboard/coursereport.php'),
+            navigation_node::TYPE_CUSTOM,
+            'completionreports',
+            'completionreports',
+            $icon
+        );
+        $node->showinflatnavigation = true;
+    }
 }
 
 function local_edudashboard_extend_navigation(global_navigation $navigation)
 {
-	global $COURSE, $CFG;
 
-	$systemcontext = context_system::instance();
+    $systemcontext = context_system::instance();
 
-	if (has_capability('local/edudashboard:view', $systemcontext)) {
+    if (has_capability('local/edudashboard:view', $systemcontext)) {
+        $url = new moodle_url('/local/edudashboard/index.php');
 
-		$url = new moodle_url('/local/edudashboard/index.php');
+        $node = navigation_node::create(
+            get_string('main_name', 'local_edudashboard'),
+            $url,
+            navigation_node::TYPE_CUSTOM,
+            get_string('main_name', 'local_edudashboard'),
+            'advanceddashboard',
+            new pix_icon('i/report', '')
+        );
 
-		$node = navigation_node::create(get_string('main_name', 'local_edudashboard'), $url, navigation_node::TYPE_CUSTOM, get_string('main_name', 'local_edudashboard'), 'advanceddashboard', new pix_icon('i/report', ''));
-
-		$node->showinflatnavigation = true;
-		$navigation->add_node($node);
-
-		//On horizonatal navigation / On top	
-
-		$navigation = $navigation->add(
-			get_string('main_name', 'local_edudashboard'),
-			$url,
-			navigation_node::TYPE_SETTING
-		);
-		$navigation->showinflatnavigation = false;
-
-	}
-	if (has_capability('moodle/course:viewhiddencourses', context_course::instance($COURSE->id))) {
-		if ($COURSE->id != 1) {
-			// code...
-
-			$icon = new pix_icon('i/stats', '');
-
-			$node = $navigation->add(
-				get_string('edudashboard_course_report', 'local_edudashboard'),
-				new moodle_url($CFG->wwwroot . '/local/edudashboard/coursereport.php', array('id' => $COURSE->id)),
-				navigation_node::TYPE_CUSTOM,
-				'completionreports',
-				'completionreports',
-				$icon
-			);
-			$node->showinflatnavigation = true;
-		}
-	}
+        $node->showinflatnavigation = true;
+        $navigation->add_node($node);
+    }
 }

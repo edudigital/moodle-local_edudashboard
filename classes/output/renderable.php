@@ -96,7 +96,7 @@ class categoriesoverview_renderable implements renderable, templatable
 
         $maxgrade = [];
 
-        //$categorias = \local_edudashboard\extra\util::categoria_fulldata();
+
 
         $categorias = [];
 
@@ -111,7 +111,7 @@ class categoriesoverview_renderable implements renderable, templatable
 
         }
 
-        // print_object($courses);
+ 
 
         foreach ($categorias as $categoria) {
             $cats_name[] = $categoria->name;
@@ -236,7 +236,7 @@ class studentcourseoverview_renderable implements renderable, templatable
             $grade = $course['maxgrade'] != 0 ? $grade * 100 / $course['maxgrade'] : 0; //Nota de 0 - 100
             $sum_grade += $grade;
 
-            //$courses_cats [$course['fullname']] = $course;    
+             
         }
 
         $data->names = $courses_name;
@@ -330,7 +330,7 @@ class siteoverview_renderable implements renderable, templatable
                     $drillserie2->subject = get_string('users1', 'local_edudashboard');
                     if ($users_cnt <= 100) {
                         foreach ($users as $index => $usr) {
-                            // print_object($usr);
+                           
                             $drillserie2->data[] = array('name' => $usr->firstname . " " . $usr->lastname, 'subject' => "pts.", 'y' => $usr->grade); //Replace $index to grade                              
                         }
                         $drilldown[] = $drillserie2;
@@ -555,5 +555,55 @@ class coursessize_renderable implements renderable, templatable
 
     }
 
+}
+
+class pagesreport_renderable implements renderable, templatable {
+    public $report_type;
+
+    public function __construct($report_type = 'course') {
+        $this->report_type = $report_type;
+    }
+
+    public function export_for_template(renderer_base $output) {
+        $data = new stdClass();
+        $data->premium_url = 'https://edudigital-learn.com/';
+
+        if ($this->report_type === 'authentication') {
+            $data->report_title = get_string('authentication_report_title', 'local_edudashboard');
+            $data->report_description = get_string('authentication_report_description', 'local_edudashboard');
+            $data->report_features = get_string('authentication_report_features', 'local_edudashboard');
+
+            $data->features_list = [
+                get_string('authentication_report_feature_users', 'local_edudashboard'),
+                get_string('authentication_report_feature_filter', 'local_edudashboard'),
+                get_string('authentication_report_feature_dates', 'local_edudashboard'),
+                get_string('authentication_report_feature_charts', 'local_edudashboard'),
+                get_string('authentication_report_feature_trends', 'local_edudashboard'),
+            ];
+
+            $data->premium_notification = get_string('premium_notification', 'local_edudashboard');
+            $data->upgrade_premium = get_string('upgrade_premium', 'local_edudashboard');
+            
+
+            $data->report_content = get_string('authentication_report_description', 'local_edudashboard');
+
+        } elseif ($this->report_type === 'course') {
+            $data->report_title = get_string('course_report_title', 'local_edudashboard');
+            $data->report_description = get_string('course_report_description', 'local_edudashboard');
+            $data->report_features = get_string('course_report_features', 'local_edudashboard');
+
+            $data->features_list = [
+                get_string('course_report_feature_enrolled', 'local_edudashboard'),
+                get_string('course_report_feature_completed', 'local_edudashboard'),
+                get_string('course_report_feature_completion_rate', 'local_edudashboard'),
+                get_string('course_report_feature_data_size', 'local_edudashboard'),
+            ];
+
+            $data->premium_notification = get_string('premium_notification', 'local_edudashboard');
+            $data->upgrade_premium = get_string('upgrade_premium', 'local_edudashboard');
+        }
+
+        return $data;
+    }
 }
 

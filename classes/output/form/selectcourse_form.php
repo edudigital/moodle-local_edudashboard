@@ -150,15 +150,11 @@ class courseorprogram_form extends \moodleform
 
         $options[1] = get_string('program', 'local_edudashboard');;
 
-        // $action = $CFG->wwwroot;
-        //print_object($action);
+
         $select = $mform->addElement('select', 'learningobject', get_string('learningobject', 'local_edudashboard'), $options, array("id" => "learningobject_select"));
         // This will select the colour blue.
         $select->setSelected($learningobject);
 
-        /*$mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
-
-        $this->add_action_buttons(false, "Actualizar");*/
 
         $mform->disable_form_change_checker();
 

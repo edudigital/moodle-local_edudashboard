@@ -23,8 +23,8 @@
  */
 
 
-$string['pluginname'] = 'EduDashboard';
-$string['main_name'] =  'pluginname';
+$string['pluginname'] = 'Edudashboard';
+$string['main_name'] =  'Edudashboard';
 $string['sitecompletionreport'] = 'Relatório de conclusão global';
 
 
@@ -209,22 +209,34 @@ $string['myclicktosompleteview'] ="Clique aqui para ver o relatório completo.";
 $string['value'] ="Valor";
 $string['course'] ="Curso";
 
-//3_highchartsexporting.min.js
-$string['viewFullscreen'] = 'Ver em tela cheia';
-$string['exitFullscreen'] = 'Sair do modo tela cheia';
-$string['prinTchart'] = 'Imprimir o gráfico';
-$string['downloadpng'] = 'Baixar imagem PNG';
-$string['downloadjpeg'] = 'Baixar imagem JPEG';
-$string['downloadpdf'] = 'Baixar documento PDF';
-$string['downloadsvg'] = 'Baixar imagem vetorial SVG';
-$string['contextbuttontitle'] = 'Menu de contexto do gráfico';
+//settings
+$string['show_hidden_categories'] = 'Bloco de Relatórios: Mostrar Categorias Ocultas';
+$string['show_admin_courses'] = 'Página Principal do EDUDashboard: Mostrar Cursos do Administrador';
+$string['show_admin_reports'] = 'Página Principal do EDUDashboard: Mostrar Relatórios do Administrador';
+$string['maxdiskocupation'] = 'Disco: Tamanho Máximo (GB)';
+$string['maxdiskocupation_help'] = 'Este valor é usado para calcular a utilização do disco no relatório. <b><br>0</b> significa sem limite de tamanho.';
 
 //authenticationreport
-$string['column_user'] = 'Utilizador';
-$string['column_datetime'] = 'Data e Hora';
-$string['column_ip'] = 'Endereço IP';
+$string['authentication_report'] = 'Relatório de Autenticação';
+$string['authentication_report_title'] = 'Relatório de Autenticação';
+$string['authentication_report_description'] = 'Este relatório fornece detalhes sobre os usuários que acessaram a plataforma, incluindo horários de login e endereços IP.';
+$string['authentication_report_features'] = 'Funcionalidades do Relatório:';
+$string['authentication_report_feature_users'] = 'Lista de usuários autenticados';
+$string['authentication_report_feature_filter'] = 'Filtragem por curso e data';
+$string['authentication_report_feature_dates'] = 'Registro detalhado de datas e horários';
+$string['authentication_report_feature_charts'] = 'Gráficos de uso da plataforma';
+$string['authentication_report_feature_trends'] = 'Tendências de autenticação ao longo do tempo';
+$string['premium_notification'] = 
+$string['upgrade_premium'] = 'Atualize para Premium 🚀';
 
-$string['learnobject'] = 'Tipo de objecto de aprendizagem';
-
+//coursereport
+$string['coursereport'] = 'Relatório do Curso';
+$string['report_content'] = 'Este recurso está disponível apenas na versão premium do Edudashboard.';
+$string['course_report_description'] = 'Este relatório fornece uma visão geral das inscrições, conclusões e acompanhamento do progresso dos cursos.';
+$string['course_report_features'] = 'Funcionalidades do Relatório:';
+$string['course_report_feature_enrolled'] = 'Total de alunos inscritos por curso';
+$string['course_report_feature_completed'] = 'Total de cursos concluídos';
+$string['course_report_feature_completion_rate'] = 'Percentagem de conclusão dos cursos';
+$string['course_report_feature_data_size'] = 'Uso de armazenamento por curso';
 
 /* Site Access Block*/

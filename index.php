@@ -94,3 +94,5 @@ $PAGE->set_title(get_string("main_name", "local_edudashboard"));
 echo $OUTPUT->header();
 echo $output;
 echo $OUTPUT->footer();
+
+

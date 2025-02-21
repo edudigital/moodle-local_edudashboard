@@ -233,13 +233,28 @@ $string['maxdiskocupation'] = 'Disk: Max size (GB)';
 $string['maxdiskocupation_help'] = 'This value is used to calculate the disk usage in report. <b><br>0</b> means no max size';
 
 //authentication
-$string['column_user'] = 'User';
-$string['column_datetime'] = 'Date and Time';
-$string['column_ip'] = 'IP Address';
+$string['authentication_report'] = 'Authentication Report';
+$string['authentication_report_title'] = 'Authentication Report';
+$string['authentication_report_description'] = 'This report provides details about users accessing the platform, including login times and IP addresses.';
+$string['authentication_report_features'] = 'Report Features:';
+$string['authentication_report_feature_users'] = 'List of authenticated users';
+$string['authentication_report_feature_filter'] = 'Filtering by course and date';
+$string['authentication_report_feature_dates'] = 'Detailed log of dates and times';
+$string['authentication_report_feature_charts'] = 'Platform usage charts';
+$string['authentication_report_feature_trends'] = 'Authentication trends over time';
+$string['premium_notification'] = 'This feature is only available in the premium version of Edudashboard.';
+$string['upgrade_premium'] = 'Upgrade to Premium 🚀';
 
-$string['learnobject'] = 'Learning object type';
 
-
+//coursereport
+$string['coursereport'] = 'Course Report';
+$string['report_content'] = 'This feature is only available in the premium version of Edudashboard.';
+$string['course_report_description'] = 'This report provides an overview of course enrollments, completions, and progress tracking.';
+$string['course_report_features'] = 'Report Features:';
+$string['course_report_feature_enrolled'] = 'Total enrolled students per course';
+$string['course_report_feature_completed'] = 'Total completed courses';
+$string['course_report_feature_completion_rate'] = 'Course completion percentage';
+$string['course_report_feature_data_size'] = 'Storage usage per course';
 
 /* Site Access Block*/
 
