@@ -27,7 +27,7 @@ $functions = array(
     'local_edudashboard_siteaccess' => array(
         'classname' => 'local_edudashboard\external\api',
         'methodname' => 'get_siteaccesss',
-        'description' => '',
+        'description' => ' ',
         'type' => 'read',
         'ajax' => true,
     ),
