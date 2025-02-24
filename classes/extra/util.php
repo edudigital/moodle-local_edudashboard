@@ -75,32 +75,6 @@ class util
     '12' => "dezembro"
 
   ];
-  public static function mycourses($user_id)
-  {
-    global $DB;
-    $courses = [];
-
-    $courseset = enrol_get_users_courses($user_id, true, '*', 'visible DESC, fullname ASC, sortorder ASC');
-
-    foreach ($courseset as $course) {
-
-
-      $course_1 = [];
-      $course_1['id'] = $course->id;
-      $course_1['fullname'] = $course->fullname;
-      $course_1['category'] = $DB->get_record('course_categories', ['id' => $course->category], "name")->name;
-      $usergrade = \grade_get_course_grade($user_id, $course->id);
-
-      $grade = round($usergrade->grade, 2);
-      $course_1['finished'] = course_report::getuser_course_progress_percentage($user_id, $course) == 100;
-
-      $course_1['rawgrade'] = $grade;
-      $course_1['maxgrade'] = round($usergrade->item->grademax, 2);
-      $courses[] = $course_1;
-    }
-
-    return $courses;
-  }
 
   public static function grade_oncategory($user_id, $category_id)
   {
