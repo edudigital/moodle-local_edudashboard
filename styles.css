@@ -7,18 +7,18 @@
 @import url("localstyles/userdossie.css");
 
 
-#container {
+.path-local_edudashboard #container {
   height: 400px;
 }
 
-.highcharts-data-table{
+.path-local_edudashboard .highcharts-data-table{
   background: white;
   margin-top: -15px;
 }
- .highcharts-credits{
+.path-local_edudashboard .highcharts-credits{
   display: none;
  }
-.highcharts-figure
+.path-local_edudashboard .highcharts-figure
 {
   min-width: 310px;
   max-width: 800px;
@@ -31,22 +31,22 @@
   background-color: white;
   
 }
-.highcharts-container {
+.path-local_edudashboard .highcharts-container {
   background-color: white;
 }
-.edudashboard-dataonchart{
+.path-local_edudashboard .edudashboard-dataonchart{
   background:url("localstyles/spinner.gif");
   background-size: auto auto;
   background-position: center center;
 }
 
 
-figure{
+.path-local_edudashboard figure{
     border: #ddd;
     border-style: solid;
     border-width: 1px;
 }
-#datatable {
+.path-local_edudashboard #datatable {
   font-family: Verdana, sans-serif;
   border-collapse: collapse;
   border: 1px solid #ebebeb;
@@ -56,34 +56,34 @@ figure{
   max-width: 500px;
 }
 
-#datatable caption {
+.path-local_edudashboard #datatable caption {
   padding: 1em 0;
   font-size: 1.2em;
   color: #555;
 }
 
-#datatable th {
+.path-local_edudashboard #datatable th {
   font-weight: 600;
   padding: 0.5em;
 }
 
-#datatable td,
-#datatable th,
-#datatable caption {
+.path-local_edudashboard #datatable td,
+.path-local_edudashboard #datatable th,
+.path-local_edudashboard #datatable caption {
   padding: 0.5em;
 }
 
-#datatable thead tr,
-#datatable tr:nth-child(even) {
+.path-local_edudashboard #datatable thead tr,
+.path-local_edudashboard #datatable tr:nth-child(even) {
   background: #f8f8f8;
 }
 
-#datatable tr:hover {
+.path-local_edudashboard #datatable tr:hover {
   background: #f1f7ff;
 }
 
 
-.highcharts-data-table table {
+.path-local_edudashboard .highcharts-data-table table {
   font-family: Verdana, sans-serif;
   border-collapse: collapse;
   border: 1px solid #ebebeb;
@@ -93,42 +93,42 @@ figure{
   max-width: 500px;
 }
 
-.highcharts-data-table caption {
+.path-local_edudashboard .highcharts-data-table caption {
   padding: 1em 0;
   font-size: 1.2em;
   color: #555;
 }
 
-.highcharts-data-table th {
+.path-local_edudashboard .highcharts-data-table th {
   font-weight: 600;
   padding: 0.5em;
 }
 
-.highcharts-data-table td,
-.highcharts-data-table th,
-.highcharts-data-table caption {
+.path-local_edudashboard .highcharts-data-table td,
+.path-local_edudashboard .highcharts-data-table th,
+.path-local_edudashboard .highcharts-data-table caption {
   padding: 0.5em;
 }
 
-.highcharts-data-table thead tr,
-.highcharts-data-table tr:nth-child(even) {
+.path-local_edudashboard .highcharts-data-table thead tr,
+.path-local_edudashboard .highcharts-data-table tr:nth-child(even) {
   background: #f8f8f8;
 }
 
-.highcharts-data-table tr:hover {
+.path-local_edudashboard .highcharts-data-table tr:hover {
   background: #f1f7ff;
 }
 
 /*Moodle with Puruty*/
-.card {
+.path-local_edudashboard .card {
     background-color: #fbfbfb;
  }
 /*Moodle without Puruty*/
- #region-main{
+.path-local_edudashboard #region-main{
  background-color: #fbfbfb;
 }
 
-.edudashboard-nochartdata-msg{
+.path-local_edudashboard .edudashboard-nochartdata-msg{
     text-align: center;
     margin-top: 50px;
     margin-right: 40px;
@@ -136,14 +136,14 @@ figure{
 }
 
 
-.edudashboard-main .mycourses-info td{
+.path-local_edudashboard .edudashboard-main .mycourses-info td{
     height: 90px;
     width: 33.33%;
 }
-.edudashboard-main .mycourses-info td:not(:first-child){
+.path-local_edudashboard .edudashboard-main .mycourses-info td:not(:first-child){
     padding-left: 10px;    
 }
-.edudashboard-main .mycourses-info .mci-block{
+.path-local_edudashboard .edudashboard-main .mycourses-info .mci-block{
     background-color: white;
     display: inline-flex;
     box-shadow: 0px 1px 2px 0px grey;
@@ -152,7 +152,7 @@ figure{
     width: 100%;
 }
 
-.mci-block .inner-block{
+.path-local_edudashboard .mci-block .inner-block{
     height: 100%;
     Width: 90px;
     border-radius: 5px 0 0 5px;
@@ -160,23 +160,23 @@ figure{
 
 }
 
-.mci-block .inb-courses{
+.path-local_edudashboard .mci-block .inb-courses{
     background-color:#28a745;
 }
 
-.mci-block .inb-courses-done{
+.path-local_edudashboard .mci-block .inb-courses-done{
   background-color: #ffc107;
 }
 
-.mci-block .inb-grade-avg{
+.path-local_edudashboard .mci-block .inb-grade-avg{
   background-color: #17a2b8;
 }
 
-.mci-info{
+.path-local_edudashboard .mci-info{
   padding-top: 4px;
 }
 
-.mci-block .fa {
+.path-local_edudashboard .mci-block .fa {
     font-size: 50px;
     right: 15px;
     margin-top: 25%;
@@ -185,46 +185,46 @@ figure{
     transition: transform .3s linear,-webkit-transform .3s linear;
 }
 
-.mci-info p{
+.path-local_edudashboard .mci-info p{
     position: absolute;
     top: 14%;
     font-size: 16px;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button {
+.path-local_edudashboard .dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: .3em .3em;
   }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+.path-local_edudashboard .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background-color: unset;  
     background: unset;  
 }
 
-.apexcharts-canvas{
+.path-local_edudashboard .apexcharts-canvas{
   background: white;
 }
 
-.course-creating-info .col, .course-fast-info .col {
+.path-local_edudashboard .course-creating-info .col, .course-fast-info .col {
     flex-basis: 0%;
     flex-grow: 1;
     max-width: 100%;
 }
 
-.course-creating-info .col, .course-fast-info .col {
+.path-local_edudashboard .course-creating-info .col, .course-fast-info .col {
     position: relative;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
 }
 
-.course-creating-info .row, .course-fast-info .row {
+.path-local_edudashboard .course-creating-info .row, .course-fast-info .row {
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px;
 }
 
-.premium-notification {
+.path-local_edudashboard .premium-notification {
   text-align: center;
   background: #f8d7da;
   color: #721c24;
@@ -234,7 +234,7 @@ figure{
   margin-top: 20px;
 }
 
-.premium-button {
+.path-local_edudashboard .premium-button {
   display: inline-block;
   padding: 10px 20px;
   background-color: #dc3545;
@@ -245,10 +245,10 @@ figure{
   transition: background 0.3s;
 }
 
-.premium-button:hover {
+.path-local_edudashboard .premium-button:hover {
   background-color: #c82333;
 }
 
-.coursereport-content {
+.path-local_edudashboard .coursereport-content {
   margin-bottom: 20px;
 }
