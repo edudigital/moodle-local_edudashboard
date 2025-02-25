@@ -13,10 +13,12 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Reports ablock external apis
+ *
  *
  * @package     local_edudashboard
+ * @category    admin
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -30,7 +32,6 @@ require_once($CFG->libdir.'/externallib.php');
 use external_api;
 
 /**
- * 
  *
  * Each external function is implemented in its own trait. This class
  * aggregates them all.

@@ -13,8 +13,9 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Plugin administration pages are defined here.
+ *
  *
  * @package     local_edudashboard
  * @category    admin
@@ -79,10 +80,10 @@ define('LOCAL_SITEREPORT_BLOCK_SMALL', 0);
 define('CPM_STUDENTS_ARCHETYPE', 'student');
 
 // Color Themes.
-define('local_edudashboard_COLOR_THEMES', [
+define('LOCAL_EDUDASHBOARD_COLOR_THEMES', [
     ['#F98012', '#133F3F', '#00A1A8', '#444444', '#666666'],
     ['#AC0034', '#142458', '#DFC11C', '#333333', '#999999'],
-    ['#ED553B', '#20639B', '#92CD53', '#222222', '#888888']
+    ['#ED553B', '#20639B', '#92CD53', '#222222', '#888888'],
 ]);
 
 define('UPGRADE_URL', 'https://bit.ly/3rJ9l24');

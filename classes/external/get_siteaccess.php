@@ -13,10 +13,12 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Reports block external apis
+ *
  *
  * @package     local_edudashboard
+ * @category    admin
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -38,22 +40,21 @@ require_once($CFG->dirroot . "/local/edudashboard/classes/task/site_access_data.
 /**
  * Trait implementing the external function local_edudashboard_set_plugin_config.
  */
-trait get_siteaccess
-{
+trait get_siteaccess {
 
     /**
      * Describes the structure of parameters for the function.
      *
      * @return external_function_parameters
      */
-    public static function get_siteaccesss_parameters()
-    {
+    public static function get_siteaccesss_parameters() {
         return new \external_function_parameters(
             array(
-                'startdate' => new \external_value(PARAM_RAW, 'Plugin Name'),
-                'enddate' => new \external_value(PARAM_RAW, 'Config Name'),
-                'courseid'=>  new \external_value(PARAM_INT, 'Course id'),
-            )
+        'startdate' => new \external_value(PARAM_RAW, 'Plugin Name'),
+        'enddate' => new \external_value(PARAM_RAW, 'Config Name'),
+        'courseid' => new \external_value(PARAM_INT, 'Course id'),
+
+           )
         );
     }
 
@@ -64,10 +65,9 @@ trait get_siteaccess
      * @param  string $configname Configuration name
      * @return object             COnfiguration
      */
-    public static function get_siteaccesss($datestart, $dateend, $courseid=0)
-    {
+    public static function get_siteaccesss($datestart, $dateend, $courseid=0) {
         // Get Plugin config.
-       
+
         global $DB;
 
         $from = 0;
@@ -84,9 +84,6 @@ trait get_siteaccess
             $to = strtotime($dateend . " 23:59:59");
         }
 
-
-
-
         // Initialize access value for site access.
         $data = array(0, 0, 0, 0, 0, 0, 0);
 
@@ -94,7 +91,7 @@ trait get_siteaccess
 
         $filters = [];
 
-        if($courseid!=0){
+        if ($courseid != 0 ) {
             $filters['id'] = $courseid;
         }
 
@@ -125,9 +122,9 @@ trait get_siteaccess
             get_string("time20", "local_edudashboard"),
             get_string("time21", "local_edudashboard"),
             get_string("time22", "local_edudashboard"),
-            get_string("time23", "local_edudashboard")
+            get_string("time23", "local_edudashboard"),
         );
-        
+
         $times = array_reverse($times, true);
         foreach ($courses as $crc) {
 
@@ -149,13 +146,10 @@ trait get_siteaccess
             FROM {logstore_standard_log}
             WHERE timecreated >= :timecreated AND courseid > 1 $extra";
         $params = ['timecreated' => $timecreated];
-        
+
         if ($courseid != 0) {
             $params['courseid'] = $courseid;
         }
-        
-        $records = $DB->get_records_sql($sql, $params);
-        
 
         $sql2 = "SELECT id, action,courseid, timecreated
             FROM {logstore_standard_log}
@@ -165,7 +159,7 @@ trait get_siteaccess
 
         $params = array(
             "action" => "loggedin",
-            "timecreated" => $from /*time() - LOCAL_SITEREPORT_ONEYEAR*/
+            "timecreated" => $from /*time() - LOCAL_SITEREPORT_ONEYEAR*/,
         );
 
         if ($from != 0) {
@@ -180,55 +174,52 @@ trait get_siteaccess
 
             $sql2 .= " AND timecreated <= :timecreated2";
         }
-        if($courseid!=1){
-        $accesslog = $DB->get_records_sql($sql, $params);
+        if ($courseid != 1) {
+            $accesslog = $DB->get_records_sql($sql, $params);
 
-        foreach ($accesslog as $log) {
-            // Column for weeks.
-            $col = number_format(date("w", $log->timecreated));
+            foreach ($accesslog as $log) {
+                // Column for weeks.
+                $col = number_format(date("w", $log->timecreated));
 
-            // Row for hours.
-            $row = number_format(date("H", $log->timecreated));
+                // Row for hours.
+                $row = number_format(date("H", $log->timecreated));
 
-            // Calculate site access for row and colums.
-            $siteaccess["crs-" . $log->courseid][($row - 23) * -1]['data'][$col]++;
+                // Calculate site access for row and colums.
+                $siteaccess["crs-" . $log->courseid][($row - 23) * -1]['data'][$col]++;
 
+            }
         }
-    }
 
-        if($courseid==1){
+        if ($courseid == 1) {
 
-        $accesslog2 = $DB->get_records_sql($sql2, $params);
+            $accesslog2 = $DB->get_records_sql($sql2, $params);
 
-        foreach ($accesslog2 as $log2) {
-            // Column for weeks.
+            foreach ($accesslog2 as $log2) {
+                // Column for weeks.
 
-            $col = number_format(date("w", $log2->timecreated));
+                $col = number_format(date("w", $log2->timecreated));
 
-            // Row for hours.
-            $row = number_format(date("H", $log2->timecreated));
+                // Row for hours.
+                $row = number_format(date("H", $log2->timecreated));
 
-            // Calculate site access for row and colums.
-            $siteaccess["crs-1"][($row - 23) * -1]['data'][$col]++;
+                // Calculate site access for row and colums.
+                $siteaccess["crs-1"][($row - 23) * -1]['data'][$col]++;
 
+            }
         }
-    }
 
-
-      
-        return array('login' => \json_encode(site_access_data::site_complete_login($from,$to,$courseid)), 'data' => \json_encode($siteaccess));
+        return array('login' => \json_encode(site_access_data::site_complete_login($from , $to , $courseid)), 'data' => \json_encode($siteaccess));
     }
     /**
      * Describes the structure of the function return value.
      *
      * @return external_single_structure
      */
-    public static function get_siteaccesss_returns()
-    {
+    public static function get_siteaccesss_returns() {
         return new \external_single_structure(
             array(
                 'login' => new \external_value(PARAM_RAW, 'Site Login', null),
-                'data' => new \external_value(PARAM_RAW, 'The Resultd', null)
+                'data' => new \external_value(PARAM_RAW, 'The Resultd', null),
             )
         );
     }
