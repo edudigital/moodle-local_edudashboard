@@ -13,8 +13,9 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Plugin administration pages are defined here.
+ *
  *
  * @package     local_edudashboard
  * @category    admin
@@ -24,29 +25,28 @@
 
  require_once('../../config.php');
  require_once($CFG->dirroot . '/local/edudashboard/classes/output/renderable.php');
- 
+
  global $CFG, $OUTPUT, $PAGE;
- 
+
  $context = context_system::instance();
  $component = "local_edudashboard";
- 
+
  require_login();
- 
+
  $pageurl = new moodle_url('/local/edudashboard/authenticationreport.php');
  $PAGE->set_context($context);
  $PAGE->set_url($pageurl);
  $PAGE->set_pagelayout('standard');
- 
+
  $PAGE->set_title(get_string('authentication_report', $component));
  $PAGE->navbar->add(get_string("main_name", $component), new moodle_url('/local/edudashboard/index.php'));
  $PAGE->navbar->add(get_string('authentication_report', $component));
- 
+
  $PAGE->requires->css('/local/edudashboard/styles.css');
- 
+
  $renderable = new \local_edudashboard\output\pagesreport_renderable('authentication');
  $renderer = $PAGE->get_renderer('local_edudashboard');
- 
+
  echo $OUTPUT->header();
  echo $renderer->render_pagesreport($renderable);
  echo $OUTPUT->footer();
- 

@@ -15,214 +15,380 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * 
  *
- *
- * @package     local_edudashboard
- * @category    admin
+ * @package      local_edudashboard
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace local_edudashboard\external;
-use local_edudashboard\task\site_access_data;
+namespace local_edudashboard\extra;
 
 defined('MOODLE_INTERNAL') || die();
 
-use external_function_parameters;
-use external_value;
 use stdClass;
+use context_course;
+
+global $CFG;
+require_once($CFG->libdir . "/completionlib.php");
+require_once($CFG->dirroot . '/grade/querylib.php');
+require_once($CFG->dirroot . '/user/lib.php');
+require_once($CFG->libdir . '/gradelib.php');
+require_once($CFG->libdir . '/filelib.php');
 
 
-require_once($CFG->libdir . '/externallib.php');
-require_once($CFG->dirroot . "/local/edudashboard/classes/constants.php");
-require_once($CFG->dirroot . "/local/edudashboard/classes/task/site_access_data.php");
+
+
 
 /**
- * Trait implementing the external function local_edudashboard_set_plugin_config.
+ * Class to get some extras info in Moodle.
+ *
+ * @package    local_edudashboard
+ * @copyright  2019 Willian Mano - http://conecti.me
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
  */
-trait get_siteaccess {
 
-    /**
-     * Describes the structure of parameters for the function.
-     *
-     * @return external_function_parameters
-     */
-    public static function get_siteaccesss_parameters() {
-        return new \external_function_parameters(
-            array(
-        'startdate' => new \external_value(PARAM_RAW, 'Plugin Name'),
-        'enddate' => new \external_value(PARAM_RAW, 'Config Name'),
-        'courseid' => new \external_value(PARAM_INT, 'Course id'),
-
-           )
-        );
+class util
+{
+  public static function combined_data($data): array
+  {
+    $combined_data = [];
+    foreach ($data as $course_name => $hours) {
+      $combined_data[] = ['name' => $course_name, 'timespent' => $hours];
     }
+    return $combined_data;
+  }
 
-    /**
-     * Set plugin configuration
-     *
-     * @param  string $pluginname Plugin name
-     * @param  string $configname Configuration name
-     * @return object             COnfiguration
-     */
-    public static function get_siteaccesss($datestart, $dateend, $courseid=0) {
-        // Get Plugin config.
+  static $DATA_ARRAY = [
+    '1' => "janeiro",
+    '2' => "fevereiro",
+    '3' => "março",
+    '4' => "abril",
+    '5' => "maio",
+    '6' => "junho",
+    '7' => "julho",
+    '8' => "agosto",
+    '9' => "setembro",
+    '10' => "outubro",
+    '11' => "novembro",
+    '12' => "dezembro"
 
-        global $DB;
+  ];
 
-        $from = 0;
+  public static function grade_oncategory($user_id, $category_id)
+  {
+    global $DB;
+    $nota = 0.0;
+    $count = 0;
+    $max = 0;
+    $response = new stdClass();
+    $courseset = \gradereport_overview_external::get_course_grades($user_id);
 
-        $to = 0;
+    foreach ($courseset['grades'] as $course) {
+ 
+      $course_n = $DB->get_record('course', ['id' => intval($course['courseid'])], "fullname,category");
 
-        if ($datestart !== "") {
-
-            $from = strtotime($datestart . " 00:00:00");
-
+      if ($course_n->category === $category_id) {
+        $val = floatval($course['rawgrade']);
+        $response->grades[$user_id . "-" . $course['courseid']] = $val;
+        $nota += $val;
+        if ($val >= $max) {
+          $max = $val;
         }
+        $count++;
+      }
 
-        if ($dateend !== "") {
-            $to = strtotime($dateend . " 23:59:59");
-        }
+    }
+    if ($count === 0) {
+      $response->media = 0;
+    } else {
+      $response->media = $nota / $count;
+    }
+    $response->maxgrade = $max;
 
-        // Initialize access value for site access.
-        $data = array(0, 0, 0, 0, 0, 0, 0);
+    return $response;
+  }
 
-        $siteaccess = [];
+  public static function categoria_fulldata()
+  {
+    //Mthod not in use
+    global $DB, $USER;
 
-        $filters = [];
+    $show_hidden = get_config('local_edudashboard', 'show_hidden_categories'); // only cathegories
 
-        if ($courseid != 0 ) {
-            $filters['id'] = $courseid;
-        }
+    $category = $DB->get_records('course_categories', $show_hidden == 0 ? ['visible' => 1, 'visibleold' => 1] : null, " name ASC", "id,visible,name");
 
-        $courses = $DB->get_records("course", $filters, "", 'id,shortname, fullname, timecreated');
+    foreach ($category as $key => $categoria) {
 
-        // Getting time strings for access inforamtion block.
-        $times = array(
-            get_string("time00", "local_edudashboard"),
-            get_string("time01", "local_edudashboard"),
-            get_string("time02", "local_edudashboard"),
-            get_string("time03", "local_edudashboard"),
-            get_string("time04", "local_edudashboard"),
-            get_string("time05", "local_edudashboard"),
-            get_string("time06", "local_edudashboard"),
-            get_string("time07", "local_edudashboard"),
-            get_string("time08", "local_edudashboard"),
-            get_string("time09", "local_edudashboard"),
-            get_string("time10", "local_edudashboard"),
-            get_string("time11", "local_edudashboard"),
-            get_string("time12", "local_edudashboard"),
-            get_string("time13", "local_edudashboard"),
-            get_string("time14", "local_edudashboard"),
-            get_string("time15", "local_edudashboard"),
-            get_string("time16", "local_edudashboard"),
-            get_string("time17", "local_edudashboard"),
-            get_string("time18", "local_edudashboard"),
-            get_string("time19", "local_edudashboard"),
-            get_string("time20", "local_edudashboard"),
-            get_string("time21", "local_edudashboard"),
-            get_string("time22", "local_edudashboard"),
-            get_string("time23", "local_edudashboard"),
-        );
+      $sum = 0;
+      $max = 0;
+      $conclusoes = 0;
+      $count_users = 0;
 
-        $times = array_reverse($times, true);
-        foreach ($courses as $crc) {
+      $courses = course_report::getSiteCourses(array('category' => intval($categoria->id)), false);
 
-            // code...
-            foreach ($times as $time) {
-                $siteaccess["crs-" . $crc->id][] = array(
-                    "name" => $time,
-                    "data" => $data,
-                );
+
+      foreach ($courses as $course) {
+        $useres = [];
+        $users = get_enrolled_users(context_course::instance(intval($course->id)), null, null, "u.id,u.firstname, u.lastname", "u.firstname ASC");
+        foreach ($users as $user) {
+
+          if (intval($user->id) !== 1) {
+       
+            $usergrade = \grade_get_course_grade($user->id, $course->id);
+            $grade = round($usergrade->grade, 2);
+
+            $sum += $grade;
+
+            $user->grade = $grade;
+
+
+
+            if ($grade >= $max) {
+              $max = $grade;
             }
 
-            // Initialize access inforamtion object.
 
-        }
+            $completion = new \completion_info($course);
 
-        // SQL to get access info log.
-        $extra = $courseid != 0 ? " AND courseid = :courseid" : "";
-        $sql = "SELECT id, action, courseid, timecreated
-            FROM {logstore_standard_log}
-            WHERE timecreated >= :timecreated AND courseid > 1 $extra";
-        $params = ['timecreated' => $timecreated];
+            // First, let's make sure completion is enabled.
+            if ($completion->is_enabled()) {
+              
+              $course->completed = $completion->is_course_complete($user->id);
 
-        if ($courseid != 0) {
-            $params['courseid'] = $courseid;
-        }
-
-        $records = $DB->get_records_sql($sql, $params);
-
-        $sql2 = "SELECT id, action,courseid, timecreated
-            FROM {logstore_standard_log}
-            WHERE  timecreated >= :timecreated  AND action = :action";
-
-        // Getting access log.
-
-        $params = array(
-            "action" => "loggedin",
-            "timecreated" => $from /*time() - LOCAL_SITEREPORT_ONEYEAR*/,
-        );
-
-        if ($from != 0) {
-            $params["timecreated"] = $from;
-        } else {
-            $params["timecreated"] = $from = strtotime("january");
-        }
-
-        if ($to != 0) {
-            $params["timecreated2"] = $to;
-            $sql .= " AND timecreated <= :timecreated2";
-
-            $sql2 .= " AND timecreated <= :timecreated2";
-        }
-        if ($courseid != 1) {
-            $accesslog = $DB->get_records_sql($sql, $params);
-
-            foreach ($accesslog as $log) {
-                // Column for weeks.
-                $col = number_format(date("w", $log->timecreated));
-
-                // Row for hours.
-                $row = number_format(date("H", $log->timecreated));
-
-                // Calculate site access for row and colums.
-                $siteaccess["crs-" . $log->courseid][($row - 23) * -1]['data'][$col]++;
-
+              $user->course_completed = $course->completed;
+             
+              if ($course->completed)
+                $conclusoes += 1;
             }
+
+            $count_users += 1;
+            $useres[$user->id] = $user;
+          }
         }
+        $category[$key]->arrayusers[$course->fullname] = $useres;
+     
+      }
 
-        if ($courseid == 1) {
 
-            $accesslog2 = $DB->get_records_sql($sql2, $params);
+      if ($count_users === 0)
+        $category[$key]->media = 0;
+      else
+        $category[$key]->media = round($sum / $count_users, 2);
 
-            foreach ($accesslog2 as $log2) {
-                // Column for weeks.
+      $category[$key]->users = $count_users;
 
-                $col = number_format(date("w", $log2->timecreated));
+      $category[$key]->conclusoes = $conclusoes;
 
-                // Row for hours.
-                $row = number_format(date("H", $log2->timecreated));
+      $category[$key]->courses = $DB->count_records("course", ['category' => intval($categoria->id)]);
 
-                // Calculate site access for row and colums.
-                $siteaccess["crs-1"][($row - 23) * -1]['data'][$col]++;
+      $category[$key]->maxgrade = $max;
 
+    }
+    return $category;
+  }
+
+  public static function system_fast_report()
+  {
+    global $DB;
+
+    $response = new stdClass();
+
+    $global_enrollment = 0;
+
+    $global_completion = 0;
+
+    $category = $DB->get_records('course_categories', null, null, "id,name");
+
+    foreach ($category as $key => $categoria) {
+
+      $sum = 0;
+      $max = 0;
+      $conclusoes = 0;
+      $count_users = 0;
+
+      $courses = course_report::getSiteCourses(array('category' => intval($categoria->id)), false);
+
+
+      foreach ($courses as $course) {
+        
+        $users = get_enrolled_users(context_course::instance(intval($course->id)), null, null, "u.id,u.firstname, u.lastname");
+        foreach ($users as $user) {
+
+          if (intval($user->id) !== 1) {
+
+  
+
+            $completion = new \completion_info($course);
+
+            // First, let's make sure completion is enabled.
+            if ($completion->is_enabled()) {
+           
+              $course->completed = $completion->is_course_complete($user->id);
+         
+              if ($course->completed)
+                $conclusoes += 1;
             }
+
+            $count_users += 1;
+          }
+
         }
 
-        return array('login' => \json_encode(site_access_data::site_complete_login($from , $to , $courseid)), 'data' => \json_encode($siteaccess));
+      }
+
+      $global_enrollment += $count_users;
+
+      $global_completion += $conclusoes;
     }
-    /**
-     * Describes the structure of the function return value.
-     *
-     * @return external_single_structure
-     */
-    public static function get_siteaccesss_returns() {
-        return new \external_single_structure(
-            array(
-                'login' => new \external_value(PARAM_RAW, 'Site Login', null),
-                'data' => new \external_value(PARAM_RAW, 'The Resultd', null),
-            )
-        );
+    $response->enrollments = $global_enrollment;
+
+    $response->completions = $global_completion;
+
+    set_config('coursesreport_sitecompletion', json_encode($response), 'local_edudashboard');
+
+    return $response;
+  }
+
+
+  public static function admin_fast_report()
+  {
+    global $DB, $CFG;
+    require_once($CFG->dirroot . '/user/lib.php');
+
+    $response = new stdClass();
+
+    // more information label
+    $response->more_information = get_string('more_information', 'local_edudashboard');
+
+    // ative and suspended users
+    $usercount = $DB->count_records("user", ["suspended" => 0, "deleted" => 0]);
+    $response->users = $usercount; //$DB->count_records("user", ["suspended"=>0])-1;//Less guest account;
+    $response->suspendedusers = $DB->count_records("user", ["suspended" => 1]);
+    $response->active_suspend_users = get_string('active_suspend_users', 'local_edudashboard');
+
+    // courses 
+    $response->courses = $DB->count_records("course") - 1; //Less frontpage course;
+    $response->courses_label = get_string('courses', 'local_edudashboard');
+
+    // completion courses
+      
+    $data = json_decode(get_config('local_edudashboard', 'coursesreport_sitecompletion'), false);
+    
+    $fastreport = $data;
+    if ($fastreport->completions) {
+      $response->completions = $fastreport->completions;
+      $response->completionpercent = round((100 * $fastreport->completions) / $fastreport->enrollments, 1);
+      $response->enrollments = $fastreport->enrollments;
+    }else{
+      $response->completionpercent=0;
     }
+    $response->courses_conclusio_label = get_string('courses_conclusion', 'local_edudashboard');
+
+    // today's users
+    $params = ['todaysdate' => strtotime("today")];
+    $todaysusers = get_users(true, '', false, null, "", '', '', '', '', 
+    'id, firstname, lastname, email, lastaccess', 
+    "lastaccess >= :todaysdate", $params);
+    $response->todaysusers = siteaccess::counttodaysusers(); //sizeof($todaysusers);
+    $response->todaysusers_array = $todaysusers;
+    $response->authentications_today_label = get_string('authentications_today', 'local_edudashboard');
+
+    return $response;
+  }
+
+  public static function getSystemFilesSize()
+  {
+    global $DB;
+
+    $file_times_mimetype = ['application/zip', 'application/vnd.moodle.backup', 'application/pdf', 'image/jpeg', 'image/png', 'audio/mp3', 'video/mp4'];
+
+    list($insql, $inparams) = $DB->get_in_or_equal($file_times_mimetype, SQL_PARAMS_QM, null);
+
+
+
+    $sql = "SELECT sum(filesize) as size FROM {files} WHERE status=0";
+
+
+    $result = $DB->get_record_sql($sql, $inparams)->size;
+
+
+    $courses = course_report::getSiteCourses(array(), false);
+
+    $str_crs_size = "";
+
+    foreach ($courses as $course) {
+
+      $result1 = 0;
+
+      $mds = get_course_mods($course->id);
+
+      foreach ($mds as $mod) {
+        $sql2 = "SELECT * FROM {context} WHERE instanceid = :instanceid";
+        $params = ['instanceid' => $mod->id];
+        $records = $DB->get_records_sql($sql2, $params);
+
+        $id = \context_module::instance($mod->id)->id;
+        $sql = "SELECT sum(filesize) as course_size FROM {files} WHERE contextid = :contextid AND status = 0";
+        $params = ['contextid' => $id];
+        $result = $DB->get_record_sql($sql, $params);
+        $result1 += round($DB->get_record_sql($sql)->course_size / (1024 * 1024), 2);
+      }
+
+      $str_crs_size .= $course->id . "-" . $result1 . ";";
+    }
+
+    return array(round($result / (1024 * 1024), 2), $str_crs_size); //In Megabyte;
+  }
+
+  public static function isTotara()
+  {
+    global $CFG;
+    return file_exists($CFG->dirroot . "/totara");
+  }
+  public static function get_program_learners($progid, $status = false)
+  {
+    global $DB;
+
+    // If status is not false then add a check for it.
+    if ($status !== false) {
+      $statussql = 'AND status = ?';
+      $statusparams = array((int) $status);
+    } else {
+      $statussql = '';
+      $statusparams = array();
+    }
+
+    // Query to retrive any users who are registered on the program
+    $sql = "SELECT id, firstname, lastname, email FROM {user} WHERE id IN
+    (SELECT DISTINCT userid FROM {prog_completion}
+    WHERE coursesetid = 0 AND programid = :programid {$statussql})";
+    $params = array_merge(['programid' => $progid], $statusparams);
+    $users = $DB->get_records_sql($sql, $params);
+
+    $params = array_merge(array($progid), $statusparams);
+
+    return $DB->get_records_sql($sql, $params);
+  }
+
+  public static function deteConverter(int $date, bool $showTime = true)
+  {
+
+    $data = date('d/m/Y H:i:s', $date);
+
+    $sparar = explode(" ", $data);
+
+    list($day, $month, $ano) = explode("/", $sparar[0]);
+
+    list($hora, $min, $seg) = explode(":", $sparar[1]);
+
+    if ($showTime) {
+      return $day . "/" . $month . "/" . $ano . ", às " . $hora . ":" . $min;
+    } else {
+      return $day . "/" . $month . "/" . $ano;
+    }
+
+  }
+
 }

@@ -7,248 +7,221 @@
 @import url("localstyles/userdossie.css");
 
 
-.path-local_edudashboard #container {
-  height: 400px;
+.path-local-edudashboard #container {
+height: 400px;
 }
 
-.path-local_edudashboard .highcharts-data-table{
-  background: white;
-  margin-top: -15px;
-}
-.path-local_edudashboard .highcharts-credits{
-  display: none;
- }
-.path-local_edudashboard .highcharts-figure
-{
-  min-width: 310px;
-  max-width: 800px;
-  margin: 1em auto;
-  min-height: 400px;
-  background:url("localstyles/background_line_chart.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 150px auto;
-  background-color: white;
-  
-}
-.path-local_edudashboard .highcharts-container {
-  background-color: white;
-}
-.path-local_edudashboard .edudashboard-dataonchart{
-  background:url("localstyles/spinner.gif");
-  background-size: auto auto;
-  background-position: center center;
+.path-local-edudashboard .highcharts-data-table {
+background: white;
+margin-top: -15px;
 }
 
-
-.path-local_edudashboard figure{
-    border: #ddd;
-    border-style: solid;
-    border-width: 1px;
-}
-.path-local_edudashboard #datatable {
-  font-family: Verdana, sans-serif;
-  border-collapse: collapse;
-  border: 1px solid #ebebeb;
-  margin: 10px auto;
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
+.path-local-edudashboard .highcharts-credits {
+display: none;
 }
 
-.path-local_edudashboard #datatable caption {
-  padding: 1em 0;
-  font-size: 1.2em;
-  color: #555;
+.path-local-edudashboard .highcharts-figure {
+min-width: 310px;
+max-width: 800px;
+margin: 1em auto;
+min-height: 400px;
+background: url("localstyles/background_line_chart.png") center center no-repeat;
+background-size: 150px auto;
+background-color: white;
 }
 
-.path-local_edudashboard #datatable th {
-  font-weight: 600;
-  padding: 0.5em;
+.path-local-edudashboard .highcharts-container {
+background-color: white;
 }
 
-.path-local_edudashboard #datatable td,
-.path-local_edudashboard #datatable th,
-.path-local_edudashboard #datatable caption {
-  padding: 0.5em;
+.path-local-edudashboard .edudashboard-dataonchart {
+background: url("localstyles/spinner.gif") center center;
+background-size: auto auto;
 }
 
-.path-local_edudashboard #datatable thead tr,
-.path-local_edudashboard #datatable tr:nth-child(even) {
-  background: #f8f8f8;
+.path-local-edudashboard figure {
+border: #ddd solid 1px;
 }
 
-.path-local_edudashboard #datatable tr:hover {
-  background: #f1f7ff;
+.path-local-edudashboard #datatable {
+font-family: Verdana, sans-serif;
+border-collapse: collapse;
+border: 1px solid #ebebeb;
+margin: 10px auto;
+text-align: center;
+width: 100%;
+max-width: 500px;
 }
 
-
-.path-local_edudashboard .highcharts-data-table table {
-  font-family: Verdana, sans-serif;
-  border-collapse: collapse;
-  border: 1px solid #ebebeb;
-  margin: 10px auto;
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
+.path-local-edudashboard #datatable caption {
+padding: 1em 0;
+font-size: 1.2em;
+color: #555;
 }
 
-.path-local_edudashboard .highcharts-data-table caption {
-  padding: 1em 0;
-  font-size: 1.2em;
-  color: #555;
+.path-local-edudashboard #datatable th {
+font-weight: 600;
+padding: 0.5em;
 }
 
-.path-local_edudashboard .highcharts-data-table th {
-  font-weight: 600;
-  padding: 0.5em;
+.path-local-edudashboard #datatable td,
+.path-local-edudashboard #datatable th,
+.path-local-edudashboard #datatable caption {
+padding: 0.5em;
 }
 
-.path-local_edudashboard .highcharts-data-table td,
-.path-local_edudashboard .highcharts-data-table th,
-.path-local_edudashboard .highcharts-data-table caption {
-  padding: 0.5em;
+.path-local-edudashboard #datatable thead tr,
+.path-local-edudashboard #datatable tr:nth-child(even) {
+background: #f8f8f8;
 }
 
-.path-local_edudashboard .highcharts-data-table thead tr,
-.path-local_edudashboard .highcharts-data-table tr:nth-child(even) {
-  background: #f8f8f8;
+.path-local-edudashboard #datatable tr:hover {
+background: #f1f7ff;
 }
 
-.path-local_edudashboard .highcharts-data-table tr:hover {
-  background: #f1f7ff;
+.path-local-edudashboard .highcharts-data-table table {
+font-family: Verdana, sans-serif;
+border-collapse: collapse;
+border: 1px solid #ebebeb;
+margin: 10px auto;
+text-align: center;
+width: 100%;
+max-width: 500px;
 }
 
-/*Moodle with Puruty*/
-.path-local_edudashboard .card {
-    background-color: #fbfbfb;
- }
-/*Moodle without Puruty*/
-.path-local_edudashboard #region-main{
- background-color: #fbfbfb;
+.path-local-edudashboard .highcharts-data-table caption {
+padding: 1em 0;
+font-size: 1.2em;
+color: #555;
 }
 
-.path-local_edudashboard .edudashboard-nochartdata-msg{
-    text-align: center;
-    margin-top: 50px;
-    margin-right: 40px;
-    margin-left: 40px;
+.path-local-edudashboard .highcharts-data-table th {
+font-weight: 600;
+padding: 0.5em;
 }
 
-
-.path-local_edudashboard .edudashboard-main .mycourses-info td{
-    height: 90px;
-    width: 33.33%;
-}
-.path-local_edudashboard .edudashboard-main .mycourses-info td:not(:first-child){
-    padding-left: 10px;    
-}
-.path-local_edudashboard .edudashboard-main .mycourses-info .mci-block{
-    background-color: white;
-    display: inline-flex;
-    box-shadow: 0px 1px 2px 0px grey;
-    border-radius: 5px;
-    height: 100%;
-    width: 100%;
+.path-local-edudashboard .highcharts-data-table td,
+.path-local-edudashboard .highcharts-data-table th,
+.path-local-edudashboard .highcharts-data-table caption {
+padding: 0.5em;
 }
 
-.path-local_edudashboard .mci-block .inner-block{
-    height: 100%;
-    Width: 90px;
-    border-radius: 5px 0 0 5px;
-    margin-right: 9px;
-
+.path-local-edudashboard .highcharts-data-table thead tr,
+.path-local-edudashboard .highcharts-data-table tr:nth-child(even) {
+background: #f8f8f8;
 }
 
-.path-local_edudashboard .mci-block .inb-courses{
-    background-color:#28a745;
+.path-local-edudashboard .highcharts-data-table tr:hover {
+background: #f1f7ff;
 }
 
-.path-local_edudashboard .mci-block .inb-courses-done{
-  background-color: #ffc107;
+.path-local-edudashboard .card {
+background-color: #fbfbfb;
 }
 
-.path-local_edudashboard .mci-block .inb-grade-avg{
-  background-color: #17a2b8;
+.path-local-edudashboard #region-main {
+background-color: #fbfbfb;
 }
 
-.path-local_edudashboard .mci-info{
-  padding-top: 4px;
+.path-local-edudashboard .edudashboard-nochartdata-msg {
+text-align: center;
+margin: 50px 40px 0 40px;
 }
 
-.path-local_edudashboard .mci-block .fa {
-    font-size: 50px;
-    right: 15px;
-    margin-top: 25%;
-    color: rgba(0,0,0,.15);
-    top: 15px;
-    transition: transform .3s linear,-webkit-transform .3s linear;
+.path-local-edudashboard .edudashboard-main .mycourses-info td {
+height: 90px;
+width: 33.33%;
 }
 
-.path-local_edudashboard .mci-info p{
-    position: absolute;
-    top: 14%;
-    font-size: 16px;
+.path-local-edudashboard .edudashboard-main .mycourses-info td:not(:first-child) {
+padding-left: 10px;
 }
 
-.path-local_edudashboard .dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: .3em .3em;
-  }
-
-.path-local_edudashboard .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background-color: unset;  
-    background: unset;  
+.path-local-edudashboard .edudashboard-main .mycourses-info .mci-block {
+background-color: white;
+display: inline-flex;
+box-shadow: 0px 1px 2px 0px grey;
+border-radius: 5px;
+height: 100%;
+width: 100%;
 }
 
-.path-local_edudashboard .apexcharts-canvas{
-  background: white;
+.path-local-edudashboard .mci-block .inner-block {
+height: 100%;
+width: 90px;
+border-radius: 5px 0 0 5px;
+margin-right: 9px;
 }
 
-.path-local_edudashboard .course-creating-info .col, .course-fast-info .col {
-    flex-basis: 0%;
-    flex-grow: 1;
-    max-width: 100%;
+.path-local-edudashboard .mci-block .inb-courses {
+background-color: #28a745;
 }
 
-.path-local_edudashboard .course-creating-info .col, .course-fast-info .col {
-    position: relative;
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+.path-local-edudashboard .mci-block .inb-courses-done {
+background-color: #ffc107;
 }
 
-.path-local_edudashboard .course-creating-info .row, .course-fast-info .row {
-    display: flex;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+.path-local-edudashboard .mci-block .inb-grade-avg {
+background-color: #17a2b8;
 }
 
-.path-local_edudashboard .premium-notification {
-  text-align: center;
-  background: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
-  padding: 15px;
-  border-radius: 5px;
-  margin-top: 20px;
+.path-local-edudashboard .mci-info {
+padding-top: 4px;
 }
 
-.path-local_edudashboard .premium-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #dc3545;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background 0.3s;
+.path-local-edudashboard .mci-block .fa {
+font-size: 50px;
+right: 15px;
+margin-top: 25%;
+color: rgba(0, 0, 0, .15);
+top: 15px;
+transition: transform .3s linear;
 }
 
-.path-local_edudashboard .premium-button:hover {
-  background-color: #c82333;
+.path-local-edudashboard .mci-info p {
+position: absolute;
+top: 14%;
+font-size: 16px;
 }
 
-.path-local_edudashboard .coursereport-content {
-  margin-bottom: 20px;
+.path-local-edudashboard .dataTables_wrapper .dataTables_paginate .paginate_button {
+padding: .3em .3em;
+}
+
+.path-local-edudashboard .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+background-color: unset;
+background: unset;
+}
+
+.path-local-edudashboard .apexcharts-canvas {
+background: white;
+}
+
+.path-local-edudashboard .premium-notification {
+text-align: center;
+background: #f8d7da;
+color: #721c24;
+border: 1px solid #f5c6cb;
+padding: 15px;
+border-radius: 5px;
+margin-top: 20px;
+}
+
+.path-local-edudashboard .premium-button {
+display: inline-block;
+padding: 10px 20px;
+background-color: #dc3545;
+color: #fff;
+text-decoration: none;
+font-weight: bold;
+border-radius: 5px;
+transition: background 0.3s;
+}
+
+.path-local-edudashboard .premium-button:hover {
+background-color: #c82333;
+}
+
+.path-local-edudashboard .coursereport-content {
+margin-bottom: 20px;
 }
