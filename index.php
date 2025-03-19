@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Plugin administration pages are defined here.
  *
@@ -73,7 +74,7 @@ $PAGE->set_url($pageurl);
 // Set Page layout.
 $PAGE->set_pagelayout('standard');
 // Add theme class to body.
-$PAGE->add_body_classes(array('theme_' . $PAGE->theme->name));
+$PAGE->add_body_classes(['theme_' . $PAGE->theme->name]);
 
 foreach (scandir($CFG->dirroot . '/local/edudashboard/externaljs/build/apexchart') as $file1) {
     if (pathinfo($file1, PATHINFO_EXTENSION) != 'js') {

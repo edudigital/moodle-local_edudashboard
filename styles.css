@@ -1,11 +1,7 @@
-@import url("localstyles/adminlteblock.css");
-@import url("localstyles/progressbar.css");
-@import url("localstyles/userreport.css");
-@import url("localstyles/chartjs.css");
-@import url("localstyles/jquery.dataTables.min.css");
+@import url("/local/edudashboard/localstyles/adminlteblock.css");
+@import url("/local/edudashboard/localstyles/progressbar.css");
+@import url("/local/edudashboard/localstyles/chartjs.css");
 @import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
-@import url("localstyles/userdossie.css");
-
 
 .path-local-edudashboard #container {
 height: 400px;
@@ -25,9 +21,9 @@ min-width: 310px;
 max-width: 800px;
 margin: 1em auto;
 min-height: 400px;
-background: url("localstyles/background_line_chart.png") center center no-repeat;
+background: url("/local/edudashboard/localstyles/background_line_chart.png") center center no-repeat;
 background-size: 150px auto;
-background-color: white;
+background-color: blue;
 }
 
 .path-local-edudashboard .highcharts-container {
@@ -35,7 +31,7 @@ background-color: white;
 }
 
 .path-local-edudashboard .edudashboard-dataonchart {
-background: url("localstyles/spinner.gif") center center;
+background: url("/local/edudashboard/localstyles/spinner.gif") center center;
 background-size: auto auto;
 }
 

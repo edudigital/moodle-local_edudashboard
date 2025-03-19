@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * 
+ *
  *
  * @package      local_edudashboard
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
@@ -41,49 +41,41 @@ use context_course;
 /**
  * Scheduled Task to Update Report Plugin Table.
  */
-class site_access_data extends \core\task\scheduled_task
-{
+class site_access_data extends \core\task\scheduled_task {
 
-   
     /**
      * Can run cron task.
      *
      * @return boolean
      */
-    public function can_run(): bool
-    {
+    public function can_run(): bool {
         return true;
     }
-
-  
 
     /**
      * Return the task's name as shown in admin screens.
      *
      * @return string
      */
-    public function get_name()
-    {
+    public function get_name() {
         return "EDUDashboard Site Access Task";
     }
 
     /**
-     * Execute the task.
+     * TODO.
+     *
+     * @param array $courses Course data
+     * @return array Chart labels and dataset
      */
-    public function execute()
-    {
-        global $DB, $times;
-        // Initialize access value for site access.
+    public function execute() {
 
-        mtrace("--->>Lets take site acess ata");
+        mtrace("--->>Lets take site acess data");
 
-     
-        $categoria_fulldata = $this->categoria_fulldata();
-
+        $categoriafulldata = $this->categoria_fulldata();
 
         util::system_fast_report();
- 
-        set_config('sitecategoriafulldata', json_encode($categoria_fulldata), 'local_edudashboard');
+
+        set_config('sitecategoriafulldata', json_encode($categoriafulldata), 'local_edudashboard');
 
         unset_config('siteaccessrecalculate', 'local_edudashboard');
 
@@ -91,93 +83,81 @@ class site_access_data extends \core\task\scheduled_task
 
         return true;
     }
-
- 
- 
-
- 
-    public static function categoria_fulldata()
-    {
-
+    /**
+     * TODO.
+     *
+     * @param array $courses Course data
+     * @return array Chart labels and dataset
+     */
+    public static function categoria_fulldata() {
         global $DB;
 
-        $show_hidden = get_config('local_edudashboard', 'show_hidden_categories'); //only cathegories
-
-        $category = $DB->get_records('course_categories', $show_hidden == 0 ? ['visible' => 1, 'visibleold' => 1] : null, " name ASC", "id,visible,name");
+        $showhiddencategories = get_config('local_edudashboard', 'show_hidden_categories');
+        $conditions = $showhiddencategories == 0 ? ['visible' => 1, 'visibleold' => 1] : null;
+        $category = $DB->get_records('course_categories', $conditions, 'name ASC', 'id, visible, name');
 
         foreach ($category as $key => $categoria) {
-
-            $sum = 0;
-            $max = 0;
+            $sum = 0.0; // Garantir que $sum seja float.
+            $max = 0.0; // Garantir que $max seja float.
             $conclusoes = 0;
-            $count_users = 0;
+            $categoriafulldata = 0;
 
-            $courses = course_report::getSiteCourses(array('category' => intval($categoria->id)), false);
-
+            $courses = course_report::getsitecourses(['category' => intval($categoria->id)], false);
 
             foreach ($courses as $course) {
                 $useres = [];
-                $users = get_enrolled_users(context_course::instance(intval($course->id)), null, null, "u.id,u.firstname, u.lastname", "u.firstname ASC");
-                foreach ($users as $user) {
+                $users = get_enrolled_users(
+                    context_course::instance(intval($course->id)),
+                    null,
+                    null,
+                    'u.id, u.firstname, u.lastname',
+                    'u.firstname ASC'
+                );
 
-                    if (intval($user->id) !== 1) {
-                        //$res = \local_edudashboard\extra\util::grade_oncategory($user->id, $categoria->id);
+                foreach ($users as $user) {
+                    if (intval($user->id) !== 1) { // Exclui usuário guest/admin.
                         $usergrade = \grade_get_course_grade($user->id, $course->id);
-                        $grade = round($usergrade->grade, 2);
+                        $grade = $usergrade->grade !== null ? round($usergrade->grade, 2) : 0.0; // Trata null como 0.
 
                         $sum += $grade;
 
                         $user->grade = $grade;
 
-
-
                         if ($grade >= $max) {
                             $max = $grade;
                         }
 
-
-                        //$courseobj = new \core_course_list_element($course);
-
                         $completion = new \completion_info($course);
-
-                        // First, let's make sure completion is enabled.
                         if ($completion->is_enabled()) {
-                            //$percentage = \core_completion\progress::get_course_progress_percentage($course, $user->id);
                             $course->completed = $completion->is_course_complete($user->id);
+                            $user->coursecompleted = $course->completed;
 
-                            $user->course_completed = $course->completed;
-                            //$course->progress  = $percentage;
-                            if ($course->completed)
+                            if ($course->completed) {
                                 $conclusoes += 1;
+                            }
                         }
-
-                        $count_users += 1;
+                        $categoriafulldata += 1;
                         $useres[$user->id] = $user;
                     }
                 }
                 $category[$key]->arrayusers[$course->fullname] = $useres;
-                
             }
 
+            // Calcula a média apenas se houver usuários ($categoriafulldata > 0).
+            if ($categoriafulldata > 0 && $sum !== null) {
+                $category[$key]->media = round($sum / $categoriafulldata, 2);
+            } else {
+                $category[$key]->media = 0.0;
+            }
 
-            if ($count_users === 0)
-                $category[$key]->media = 0;
-            else
-                $category[$key]->media = round($sum / $count_users, 2);
-
-            $category[$key]->users = $count_users;
-
+            $category[$key]->users = $categoriafulldata;
             $category[$key]->conclusoes = $conclusoes;
-
-            $category[$key]->courses = $DB->count_records("course", ['category' => intval($categoria->id)]);
-
+            $category[$key]->courses = $DB->count_records('course', ['category' => intval($categoria->id)]);
             $category[$key]->maxgrade = $max;
 
-
             util::admin_fast_report();
-
         }
+
         return $category;
     }
 }
-

@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Plugin version and other meta-data are defined here.
  *
@@ -25,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_edudashboard';
 $plugin->release = '1.0';
-$plugin->version = 2024080103;
-$plugin->requires = 2015120300;
+$plugin->version = 2025010100;
+$plugin->requires = 2022041912;
 $plugin->maturity = MATURITY_STABLE;

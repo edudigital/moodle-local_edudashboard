@@ -15,28 +15,34 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * 
  *
- * @package      local_edudashboard
+ *
+ * @package     local_edudashboard
+ * @category    admin
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 namespace local_edudashboard\extra;
 
 defined('MOODLE_INTERNAL') || die();
 
- 
+
 global $CFG;
 
-
-class siteaccess{
-
-    public static function counttodaysusers()
-    {
+/**
+ * class siteaccess
+ */
+class siteaccess {
+    /**
+     * function counttodaysusers
+     */
+    public static function counttodaysusers() {
         global $DB;
 
-        return $DB->get_record_sql("SELECT count(id) as logins FROM {logstore_standard_log} WHERE action ='loggedin' and timecreated >= ".strtotime("today"))->logins;
-        // code...
+        return $DB->get_record_sql("SELECT count(id) as logins
+                                  FROM {logstore_standard_log}
+                                  WHERE action ='loggedin' and timecreated >= ".strtotime("today"))->logins;
     }
 
 

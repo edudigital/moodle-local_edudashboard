@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Plugin administration pages are defined here.
  *
@@ -21,6 +22,7 @@
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 
 require_once('../../config.php');
 require_once($CFG->dirroot . '/local/edudashboard/classes/output/renderable.php');
@@ -31,7 +33,7 @@ $context = context_system::instance();
 $component = "local_edudashboard";
 
 require_login();
-require_capability('moodle/course:viewhiddencourses', $context);
+require_capability('local/edudashboard:view', $context);
 
 $pageurl = new moodle_url('/local/edudashboard/coursereport.php');
 $PAGE->set_context($context);
@@ -50,7 +52,6 @@ $PAGE->navbar->add(get_string('course_report', $component));
 $PAGE->requires->css('/local/edudashboard/styles.css');
 
 $renderable = new \local_edudashboard\output\pagesreport_renderable();
-
 
 $renderer = $PAGE->get_renderer('local_edudashboard');
 

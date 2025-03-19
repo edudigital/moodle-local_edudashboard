@@ -15,9 +15,10 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * 
  *
- * @package      local_edudashboard
+ *
+ * @package     local_edudashboard
+ * @category    admin
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -32,136 +33,141 @@ global $CFG;
 
 require_once("$CFG->libdir/formslib.php");
 
-class selectcourse_form extends \moodleform
-{
-    //Add elements to form
-
-    public function definition()
-    {
-        global $CFG, $DB, $PAGE;
+/**
+ * Form for selecting a course.
+ */
+class selectcourse_form extends \moodleform {
+    /**
+     * Define the form elements.
+     */
+    public function definition() {
+        global $CFG;
 
         $courseid = optional_param('id', 0, PARAM_INT);
+        $mform = $this->_form;
 
-        $mform = $this->_form; // Don't forget the underscore!
-
-        $courses = course_report::getSiteCourses(array(), false);
-
-        foreach ($courses as $course) {
-
-
-
-            if ($course->id != 1) {
-                $options[$course->id] = $course->fullname . " ({$course->shortname})";
-            } //We dont want forn page
-
-        }
-
-        $action = $CFG->wwwroot;
-        //print_object($action);
-        $select = $mform->addElement('select', 'courses', get_string('selectedcourse', 'local_edudashboard'), $options, array("id" => "course_select"));
-        // This will select the colour blue.
-        $select->setSelected(intval($courseid));
-
-        /*$mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
-
-        $this->add_action_buttons(false, "Actualizar");*/
-
-        $mform->disable_form_change_checker();
-
-    }
-    //Custom validation should be added here
-    function validation($data, $files)
-    {
-        return array();
-    }
-}
-
-class siteaccess_form extends \moodleform
-{
-    //Add elements to form
-
-    public function definition()
-    {
-        global $CFG, $DB, $PAGE;
-
-        $courseid = optional_param('id', 1, PARAM_INT);
-
-        $mform = $this->_form; // Don't forget the underscore!
-
-        $courses = course_report::getSiteCourses(array(), false);
+        $courses = course_report::getsitecourses([], false);
+        $options = [];
 
         foreach ($courses as $course) {
-
-            $options[$course->id] = $course->fullname;
-
-            if ($course->id == 1) {
-                $options[$course->id] = $course->fullname . " (Site)";
-            } //We dont want forn page
-            else {
+            if ($course->id != 1) { // Exclude front page.
                 $options[$course->id] = $course->fullname . " ({$course->shortname})";
             }
-
-
-
         }
 
-        $action = $CFG->wwwroot;
-        //print_object($action);
-        $select = $mform->addElement('select', 'courses', get_string('selectedcourse', 'local_edudashboard'), $options, array("id" => "course_select"));
-
-        $mform->addElement('date_selector', 'fromdate', get_string('fromdate', 'local_edudashboard'), array(
-            'optional' => true
-        ), array("id" => "timefrom"));
-
-        $mform->addElement('date_selector', 'todate', get_string('todate', 'local_edudashboard'), array(
-            'stopyear' => intval(date("Y")),
-            'optional' => true
-        ), array("id" => "timeto"));
-        // This will select the colour blue.
+        // Add select element for courses.
+        $select = $mform->addElement('select', 'courses', get_string('selectedcourse', 'local_edudashboard'), $options, [
+            'id' => 'course_select',
+        ]);
         $select->setSelected(intval($courseid));
 
-        /*$mform->addElement('date_time_selector', 'assesstimestart', get_string('from'));
-
-        $this->add_action_buttons(false, "Actualizar");*/
-
         $mform->disable_form_change_checker();
-
     }
-    //Custom validation should be added here
-    function validation($data, $files)
-    {
-        return array();
+
+    /**
+     * Custom validation for the form.
+     *
+     * @param array $data Form data
+     * @param array $files Form files
+     * @return array Validation errors
+     */
+    public function validation($data, $files) {
+        return [];
     }
 }
 
-class courseorprogram_form extends \moodleform
-{
-    //Add elements to form
+/**
+ * Form for site access with course and date filters.
+ */
+class siteaccess_form extends \moodleform {
+    /**
+     * Define the form elements.
+     */
+    public function definition() {
+        global $CFG;
 
-    public function definition()
-    {
-        global $CFG, $DB, $PAGE;
+        $courseid = optional_param('id', 1, PARAM_INT);
+        $mform = $this->_form;
 
-        $learningobject = optional_param('lb', 0, PARAM_INT);
+        $courses = course_report::getsitecourses([], false);
+        $options = [];
 
-        $mform = $this->_form; // Don't forget the underscore!
+        foreach ($courses as $course) {
+            if ($course->id == 1) {
+                $options[$course->id] = $course->fullname . ' (Site)';
+            } else {
+                $options[$course->id] = $course->fullname . " ({$course->shortname})";
+            }
+        }
 
-        $options[0] = get_string('course', 'local_edudashboard');
+        // Add select element for courses.
+        $select = $mform->addElement('select', 'courses', get_string('selectedcourse', 'local_edudashboard'), $options, [
+            'id' => 'course_select',
+        ]);
+        $select->setSelected(intval($courseid));
 
-        $options[1] = get_string('program', 'local_edudashboard');;
+        // Add date selectors.
+        $mform->addElement('date_selector', 'fromdate', get_string('fromdate', 'local_edudashboard'), [
+            'optional' => true,
+        ], [
+            'id' => 'timefrom',
+        ]);
 
-
-        $select = $mform->addElement('select', 'learningobject', get_string('learningobject', 'local_edudashboard'), $options, array("id" => "learningobject_select"));
-        // This will select the colour blue.
-        $select->setSelected($learningobject);
-
+        $mform->addElement('date_selector', 'todate', get_string('todate', 'local_edudashboard'), [
+            'stopyear' => intval(date('Y')),
+            'optional' => true,
+        ], [
+            'id' => 'timeto',
+        ]);
 
         $mform->disable_form_change_checker();
-
     }
-    //Custom validation should be added here
-    function validation($data, $files)
-    {
-        return array();
+
+    /**
+     * Custom validation for the form.
+     *
+     * @param array $data Form data
+     * @param array $files Form files
+     * @return array Validation errors
+     */
+    public function validation($data, $files) {
+        return [];
+    }
+}
+
+/**
+ * Form for selecting course or program.
+ */
+class courseorprogram_form extends \moodleform {
+    /**
+     * Define the form elements.
+     */
+    public function definition() {
+        $learningobject = optional_param('lb', 0, PARAM_INT);
+        $mform = $this->_form;
+
+        $options = [
+            0 => get_string('course', 'local_edudashboard'),
+            1 => get_string('program', 'local_edudashboard'),
+        ];
+
+        // Add select element for learning object.
+        $select = $mform->addElement('select', 'learningobject', get_string('learningobject', 'local_edudashboard'), $options, [
+            'id' => 'learningobject_select',
+        ]);
+        $select->setSelected($learningobject);
+
+        $mform->disable_form_change_checker();
+    }
+
+    /**
+     * Custom validation for the form.
+     *
+     * @param array $data Form data
+     * @param array $files Form files
+     * @return array Validation errors
+     */
+    public function validation($data, $files) {
+        return [];
     }
 }

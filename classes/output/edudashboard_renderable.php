@@ -15,16 +15,15 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * 
  *
- * @package      local_edudashboard
+ *
+ * @package     local_edudashboard
+ * @category    admin
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 namespace local_edudashboard\output;
-
-defined('MOODLE_INTERNAL') || die();
 
 use moodle_url;
 use renderable;
@@ -34,9 +33,12 @@ use templatable;
 use local_edudashboard\extra\util;
 use local_edudashboard\extra\course_report;
 use context_system;
+use local_edudashboard\task\site_access_data;
 
-class edudashboard_renderable implements renderable, templatable
-{
+/**
+ * Renderable class for exporting EDUDashboard data to templates.
+ */
+class edudashboard_renderable implements renderable, templatable {
     /**
      * Function to export the renderer data in a format that is suitable for a
      * edit mustache template.
@@ -44,37 +46,31 @@ class edudashboard_renderable implements renderable, templatable
      * @param renderer_base $output Used to do a final render of any components that need to be rendered for export.
      * @return stdClass|array
      */
-    public function export_for_template(renderer_base $output)
-    {
+    public function export_for_template(renderer_base $output) {
         global $CFG, $PAGE, $USER, $DB;
 
         $component = "local_edudashboard";
         $export = new stdClass();
         $context = context_system::instance();
-
-        /* Prepare reports blocks.*/
-        //print_object(user_report::userInfo(3));
         $export->blocks = [];
 
-        $show_admin_report = get_config('local_edudashboard', 'show_admin_reports');
+        $showadminreport = get_config('local_edudashboard', 'showadminreports');
 
-        if (has_capability('mod/data:managetemplates', $context) || $show_admin_report == 1) {
+         site_access_data::categoria_fulldata();
+        if (has_capability('mod/data:managetemplates', $context) || $showadminreport == 1) {
             $export->fastreport = util::admin_fast_report();
 
             if (is_siteadmin()) {
                 $export->shou_config = "true";
                 $export->configtext = get_string('configs', 'local_edudashboard');
             }
-
-
             $export->wwwroot = $CFG->wwwroot;
 
-            $max_disk_ocupation = get_config('local_edudashboard', 'maxdiskocupation');
+            $maxdiskocupation = get_config('local_edudashboard', 'maxdiskocupation');
 
             $maxdocp = "";
 
-
-            $diskusage = round($this->getSystemFilesSize(), 2);
+            $diskusage = round($this->getsystemfilessize(), 2);
 
             if ($diskusage < 0) {
                 $export->crondisk = 1;
@@ -82,36 +78,38 @@ class edudashboard_renderable implements renderable, templatable
                 $export->disk_no_data = get_string('disk_no_data', 'local_edudashboard');
             }
 
-            if (floatval($max_disk_ocupation) > 0) {
-                $maxdocp = " / " . $max_disk_ocupation . " GB";
+            if (floatval($maxdiskocupation) > 0) {
+                $maxdocp = " / " . $maxdiskocupation . " GB";
 
-                $export->diskprogress = intval((100 * floatval($diskusage)) / (floatval($max_disk_ocupation) * 1024));
+                $export->diskprogress = intval((100 * floatval($diskusage)) / (floatval($maxdiskocupation) * 1024));
 
-
-            } else { 
+            } else {
                 $export->diskprogress = 0;
             }
 
-            $PAGE->requires->js_call_amd('local_edudashboard/apexporgresschart', 'init', array($export->diskprogress, "radialchart",array(get_string('chart_4_ocupede', 'local_edudashboard'))));
+            $PAGE->requires->js_call_amd(
+                'local_edudashboard/apexporgresschart',
+                'init',
+                [$export->diskprogress, "radialchart", [get_string('chart_4_ocupede', 'local_edudashboard')]]
+            );
 
-            $diskusage = course_report::dataSizeFormater($diskusage);
+            $diskusage = course_report::datasizeformater($diskusage);
 
             $export->moodledata_size = " " . $diskusage . $maxdocp;
 
-            $is_totara = false;
+            $istotara = false;
+            if (is_dir($CFG->dirroot . "/totara")) {
+                $istotara = true;
+            }
 
-            if (is_dir($CFG->dirroot . "/totara"))
-                $is_totara = true;
-
-            if ($is_totara) {
+            if ($istotara) {
                 $PAGE->requires->css(new moodle_url($CFG->wwwroot . "/local/edudashboard/localstyles/totara.styl.cmpt.css"));
             }
 
-
-
             $block = new stdClass();
 
-            $block->content = $PAGE->get_renderer($component)->render(new \local_edudashboard\output\categoriesoverview_renderable());
+            $block->content = $PAGE->get_renderer($component)
+                ->render(new \local_edudashboard\output\categoriesoverview_renderable());
             $export->blocks[] = $block;
 
             $block = new stdClass();
@@ -123,24 +121,23 @@ class edudashboard_renderable implements renderable, templatable
             $export->courses_size = $block;
 
         }
-        $show_hidden = get_config('local_edudashboard', 'show_admin_courses');
+        $showhidden = get_config('local_edudashboard', 'show_admin_courses');
 
         if (is_siteadmin()) {
-            if ($show_hidden == 1) {
+            if ($showhidden == 1) {
                 $export->showadmin = "true";
                 $block = new stdClass();
-                $block->content = $PAGE->get_renderer($component)->render(new \local_edudashboard\output\studentcourseoverview_renderable());
+                $block->content = $PAGE->get_renderer($component)
+                    ->render(new \local_edudashboard\output\studentcourseoverview_renderable());
                 $export->site_user_courses = $block;
             }
         } else {
             $export->showadmin = "true";
             $block = new stdClass();
-            $block->content = $PAGE->get_renderer($component)->render(new \local_edudashboard\output\studentcourseoverview_renderable());
+            $block->content = $PAGE->get_renderer($component)
+                ->render(new \local_edudashboard\output\studentcourseoverview_renderable());
             $export->site_user_courses = $block;
         }
-
-
-
         $PAGE->requires->js_call_amd('local_edudashboard/main', 'init');
 
         return $export;
@@ -152,19 +149,13 @@ class edudashboard_renderable implements renderable, templatable
      * @return string
      * @throws \coding_exception
      */
-
-    private function getSystemFilesSize()
-    {
-
-
+    private function getsystemfilessize() {
         try {
             $cache = \cache::make('local_edudashboard', 'admininfos');
         } catch (\coding_exception $e) {
             return "Erro. Possivelmente a Cahche para 'admininfos' não foi configurado propriamente.";
         }
-
-
-        $total = $cache->get('totaldiskusage'); /*util::getSystemFilesSize();*/
+        $total = $cache->get('totaldiskusage');
 
         if (!$total) {
             return -1;

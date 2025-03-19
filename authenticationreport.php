@@ -32,6 +32,7 @@
  $component = "local_edudashboard";
 
  require_login();
+ require_capability('local/edudashboard:view', $context);
 
  $pageurl = new moodle_url('/local/edudashboard/authenticationreport.php');
  $PAGE->set_context($context);

@@ -1,8 +1,8 @@
-canvas {
+.path-local-edudashboard canvas {
   border: 0px dotted red; 
 }
 
-.chart-container {
+.path-local-edudashboard .chart-container {
     position: relative;
     margin: auto;
     height: 300px;

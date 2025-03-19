@@ -25,42 +25,41 @@
 
  defined('MOODLE_INTERNAL') || die();
 
- // Ensure the configurations for this site are set
- if ($hassiteconfig) {
- 
-     // Create the new settings page
+/* Ensure the configurations for this site are set*/
+if ($hassiteconfig) {
+
+     /* Create the new settings page */
      $settings = new admin_settingpage('local_edudashboard', get_string('pluginname', 'local_edudashboard'));
- 
+
      $ADMIN->add('localplugins', new admin_category('edudashboard', get_string('pluginname', 'local_edudashboard')));
- 
-     // Create settings
+     /* Create settings */
      $settings->add(
          new admin_setting_configcheckbox(
              'local_edudashboard/show_hidden_categories',
              get_string('show_hidden_categories', 'local_edudashboard'),
-             get_string('show_hidden_categories_help', 'local_edudashboard'),
+             "",
              0
          )
      );
- 
+
      $settings->add(
          new admin_setting_configcheckbox(
              'local_edudashboard/show_admin_courses',
              get_string('show_admin_courses', 'local_edudashboard'),
-             get_string('show_admin_courses_help', 'local_edudashboard'),
+             "",
              0
          )
      );
- 
+
      $settings->add(
          new admin_setting_configcheckbox(
              'local_edudashboard/show_admin_reports',
              get_string('show_admin_reports', 'local_edudashboard'),
-             get_string('show_admin_reports_help', 'local_edudashboard'),
+             "",
              0
          )
      );
- 
+
      $settings->add(
          new admin_setting_configtext(
              'local_edudashboard/maxdiskocupation',
@@ -70,8 +69,7 @@
              PARAM_FLOAT
          )
      );
- 
+
      $ADMIN->add('edudashboard', $settings);
-    
-    
+
 }

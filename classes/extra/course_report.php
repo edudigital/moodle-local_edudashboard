@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * 
+ *
  *
  * @package      local_edudashboard
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
@@ -35,7 +35,7 @@ require_once($CFG->dirroot . '/grade/querylib.php');
 require_once($CFG->dirroot . '/user/lib.php');
 require_once($CFG->dirroot . '/enrol/locallib.php');
 require_once($CFG->libdir . '/gradelib.php');
- 
+
 
 /**
  * Class to get some extras info in Moodle.
@@ -46,50 +46,63 @@ require_once($CFG->libdir . '/gradelib.php');
 
  */
 
-class course_report
-{
+/**
+ * Class course_report
+ */
+class course_report {
 
-
-    public static function getCoursesFilesSize()
-    {
-
-
-        $courses_size = [];
-
+    /**
+     * function getcoursefilessize
+     */
+    public static function getcoursefilessize() {
+        $coursessize = [];
         try {
             $cache = \cache::make('local_edudashboard', 'admininfos');
         } catch (\coding_exception $e) {
-            return "Erro. Possivelmente a Cahche para 'admininfos' não foi configurado propriamente.";
+            return "Error. Need Settings 'admininfos'.";
         }
 
         $data = $cache->get('coursesdiskusage');
 
+        if (!is_string($data) || empty($data)) {
+            return $coursessize;
+        }
+
         $data = explode(";", $data);
 
         foreach ($data as $dat) {
+            if (empty($dat)) {
+                continue;
+            }
+
             $arra = explode("-", $dat);
 
-            $courses_size[intval($arra[0])] = $arra[1];
+            if (count($arra) >= 2 && isset($arra[0]) && isset($arra[1])) {
+                $courseid = intval($arra[0]);
+                $size = $arra[1];
+
+                if (is_numeric($size)) {
+                    $coursessize[$courseid] = $size;
+                }
+            }
         }
 
-        return $courses_size;
+        return $coursessize;
     }
+    /**
+     * function getcoursefilessize
+     */
+    public static function getsitecoursescompletion() {
 
+        $courses = self::getsitecourses([], false);
 
-   
+        $coursessize = self::getcoursefilessize();
 
-    public static function getSitecoursesCompletion()
-    {
+        $globalenrrolments = 0;
 
-        $courses = self::getSiteCourses(array(), false);
+         $globalcoursessize = 0;
 
-        $courses_size = course_report::getCoursesFilesSize();
-
-        $global_enrrolments = 0;
-
-        $global_courses_size = 0;
-
-        $global_completed = 0;
+        $globalcompleted = 0;
         $coursearray = [];
 
         if (!$courses) {
@@ -102,19 +115,14 @@ class course_report
                 continue;
             }
 
-            $course->size = doubleval($courses_size[$course->id]);
+            $course->size_f = isset($coursessize[$course->id]) ? self::datasizeformater($course->size) : "Não calculado";
 
-            $global_courses_size += $course->size;
+            $userpicked = get_enrolled_users(context_course::instance(intval($course->id)), null, null,
+            "u.id,u.firstname,u.email, u.lastname", "u.firstname ASC");
 
-            $course->size_f = isset($courses_size[$course->id]) ? course_report::dataSizeFormater($course->size) : "Não calculado"; //Formatted Size: for output purpouse;
-
-            $userpicked = get_enrolled_users(context_course::instance(intval($course->id)), null, null, "u.id,u.firstname,u.email, u.lastname", "u.firstname ASC");
-
-
-            $count_users = 0;
+            $countusers = 0;
 
             $completedusers = 0;
-
             foreach ($userpicked as $user) {
 
                 if (intval($user->id) !== 1) {
@@ -123,28 +131,29 @@ class course_report
                         $completedusers++;
                     }
 
-                    $count_users += 1;
+                    $countusers += 1;
                 }
             }
 
-            $course->total_enrolled = $count_users;
+            $course->total_enrolled = $countusers;
 
-            $global_enrrolments += $course->total_enrolled;
+            $globalenrrolments += $course->total_enrolled;
 
             $course->completedusers = $completedusers;
 
-            $global_completed += $course->completedusers;
+            $globalcompleted += $course->completedusers;
 
-            $course->completedusers_percentage = $count_users !== 0 ? round(100 * $completedusers / $count_users, 2) : 0;
+            $course->completedusers_percentage = $countusers !== 0 ? round(100 * $completedusers / $countusers, 2) : 0;
 
             $coursearray[] = $course;
         }
-
-
-        return array($coursearray, $global_enrrolments, $global_enrrolments!=0?round((100 * $global_completed) / $global_enrrolments, 1):0, $global_completed, course_report::dataSizeFormater($global_courses_size));
+        return [$coursearray, $globalenrrolments, $globalenrrolments != 0 ?
+        round((100 * $globalcompleted) / $globalenrrolments, 1) : 0, $globalcompleted, self::datasizeformater( $globalcoursessize)];
     }
-    public static function dataSizeFormater($diskusage)
-    {
+    /**
+     * function datasizeformater
+     */
+    public static function datasizeformater($diskusage) {
 
         $usageunit = ' MB';
 
@@ -157,12 +166,10 @@ class course_report
 
         return $diskusage . $usageunit;
     }
-
-
-  
-
-    public static function getSiteCourses(array $select, bool $forceGetHiddenCurses)
-    {
+    /**
+     * function getsitecourses
+     */
+    public static function getsitecourses(array $select, bool $forcegethiddencurses) {
         global $DB;
         $select["visible"] = 1;
 
@@ -171,4 +178,33 @@ class course_report
         return $courses;
     }
 
+    /**
+     * Converts a timestamp to a formatted date string.
+     *
+     * @param int $date Unix timestamp
+     * @param bool $showtime Whether to show time
+     * @return string Formatted date string
+     */
+    public static function getuser_course_progress_percentage($userid, $course) {
+        global $CFG;
+
+        $istotara = false;
+
+        if (is_dir($CFG->dirroot . "/totara")) {
+            $istotara = true;
+        }
+
+        if ($istotara) {
+
+            $completion = new completion_completion(['userid' => $userid, 'course' => $course->id]);
+            $progressinfo = $completion->get_progressinfo();
+            $percent = $progressinfo->get_percentagecomplete();
+
+            return $percent ? round($percent, 2) : 0;
+        } else {
+            $progressprct = \core_completion\progress::get_course_progress_percentage($course, $userid);
+            return $progressprct ? round($progressprct, 2) : 0;
+        }
+
+    }
 }

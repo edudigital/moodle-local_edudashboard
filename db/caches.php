@@ -16,7 +16,7 @@
 
 /**
  * Defines the cache usage
-* @package      local_edudashboard
+ * @package      local_edudashboard
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

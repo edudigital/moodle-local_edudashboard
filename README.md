@@ -27,7 +27,7 @@ EDUdashboard is a powerful plugin for Moodle that provides detailed graphical re
 
 ## Requirements
 
-- Moodle **3.0+** (compatible with Moodle 4.x)
+- Moodle **4.0+** (compatible with Moodle 4.x)
 - PHP **7.4+**
 - Database: MySQL / PostgreSQL
 

@@ -14,7 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-defined('MOODLE_INTERNAL') || die();
 /**
  * Plugin version and other meta-data are defined here.
  *
@@ -22,33 +21,12 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 /**
  * Adding "Advanced Dashboard" Menu Link To sidebar
  * @param navigation_node $nav navigation node
  */
-
-function local_edudashboard_extend_navigation_course($navigation, $course)
-{
-    global $CFG;
-
-    if (has_capability('moodle/course:viewhiddencourses', context_course::instance($course->id))) {
-        // Adiciona o link no menu do curso
-        $icon = new pix_icon('i/stats', '');
-
-        $node = $navigation->add(
-            get_string('completionreports', 'local_edudashboard'),
-            new moodle_url($CFG->wwwroot . '/local/edudashboard/coursereport.php'),
-            navigation_node::TYPE_CUSTOM,
-            'completionreports',
-            'completionreports',
-            $icon
-        );
-        $node->showinflatnavigation = true;
-    }
-}
-
-function local_edudashboard_extend_navigation(global_navigation $navigation)
-{
+function local_edudashboard_extend_navigation(global_navigation $navigation) {
 
     $systemcontext = context_system::instance();
 

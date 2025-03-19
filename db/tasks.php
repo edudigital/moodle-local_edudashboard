@@ -22,6 +22,9 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// This line protects the file from being accessed by a URL directly.
+defined('MOODLE_INTERNAL') || die();
+
 $tasks = [
     [
         'classname' => 'local_edudashboard\task\diskusage',
@@ -32,7 +35,7 @@ $tasks = [
         'month' => '*',
         'dayofweek' => '*',
     ],
- 
+
     [
         'classname' => 'local_edudashboard\task\site_access_data',
         'blocking' => 0,
@@ -41,5 +44,5 @@ $tasks = [
         'day' => '*',
         'month' => '*',
         'dayofweek' => '*',
-    ]
+    ],
 ];
