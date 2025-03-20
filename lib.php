@@ -24,7 +24,8 @@
 
 /**
  * Adding "Advanced Dashboard" Menu Link To sidebar
- * @param navigation_node $nav navigation node
+ *
+ * @param global_navigation $navigation The navigation object to extend
  */
 function local_edudashboard_extend_navigation(global_navigation $navigation) {
 

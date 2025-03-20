@@ -1,35 +1,43 @@
 {{!
-// This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-//
+    This file is part of Moodle - http://moodle.org/
 
-/**
- * Plugin version and other meta-data are defined here.
- *
- * @package     local_edudashboard
- * @copyright   2025 edudigital <geral@edudigital-learn.com>
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    /**
+     * Template for rendering a chart view with Highcharts integration.
+     *
+     * @package     local_edudashboard
+     * @copyright   2025 edudigital <geral@edudigital-learn.com>
+     * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+     */
+
+    /**
+     * @template local_edudashboard_chartview
+     * @example {
+     *   "style": "width: 100%; max-width: 800px; margin: 0 auto;",
+     *   "nodata": false,
+     *   "containerid": "chart-container-123",
+     *   "message": "No data available to display the chart."
+     * }
+     */
 }}
- <figure style="{{style}}" class="highcharts-figure {{^nodata}} edudashboard-dataonchart {{/nodata}}" >
-	 {{^nodata}}
-	  	<div id='{{containerid}}'></div>
-	 {{/nodata}}
+<figure style="{{style}}" class="highcharts-figure {{^nodata}} edudashboard-dataonchart {{/nodata}}">
+    {{^nodata}}
+        <div id="{{#containerid}}{{containerid}}{{/containerid}}{{^containerid}}default-chart-container{{/containerid}}"></div>
+    {{/nodata}}
 
-	{{#nodata}}
-	  	<p class="edudashboard-nochartdata-msg">{{message}}</p>
-	{{/nodata}}
- 	
+    {{#nodata}}
+        <p class="edudashboard-nochartdata-msg">{{message}}</p>
+    {{/nodata}}
 </figure>

@@ -351,20 +351,17 @@ class util {
 
     }
     /**
-     * Converts a timestamp to a formatted date string.
+     * Retrieves the list of courses enrolled by a specific user.
      *
-     * @param int $date Unix timestamp
-     * @param bool $showtime Whether to show time
-     * @return string Formatted date string
+     * @param int $userid The ID of the user whose courses are to be retrieved
+     * @return array An array of courses with details such as ID, fullname, category, grade, and completion status
      */
     public static function mycourses($userid) {
-
         global $DB;
         $courses = [];
         $courseset = enrol_get_users_courses($userid, true, '*', 'visible DESC, fullname ASC, sortorder ASC');
 
         foreach ($courseset as $course) {
-
             $course1 = [];
             $course1['id'] = $course->id;
             $course1['fullname'] = $course->fullname;

@@ -33,10 +33,9 @@ use local_edudashboard\extra\util;
     */
 class diskusage extends \core\task\scheduled_task {
     /**
-     * TODO.
+     * Returns the name of the disk usage task.
      *
-     * @param array $courses Course data
-     * @return array Chart labels and dataset
+     * @return string The name of the task
      */
     public function get_name() {
         return "EDUdashboard disk usage task";

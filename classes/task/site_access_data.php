@@ -62,13 +62,11 @@ class site_access_data extends \core\task\scheduled_task {
     }
 
     /**
-     * TODO.
+     * Executes the site access data collection task.
      *
-     * @param array $courses Course data
-     * @return array Chart labels and dataset
+     * @return bool True on successful execution
      */
     public function execute() {
-
         mtrace("--->>Lets take site acess data");
 
         $categoriafulldata = $this->categoria_fulldata();
@@ -83,11 +81,11 @@ class site_access_data extends \core\task\scheduled_task {
 
         return true;
     }
+
     /**
-     * TODO.
+     * Retrieves full data for course categories, including user grades and completion stats.
      *
-     * @param array $courses Course data
-     * @return array Chart labels and dataset
+     * @return array An array of category objects with detailed user and course data
      */
     public static function categoria_fulldata() {
         global $DB;

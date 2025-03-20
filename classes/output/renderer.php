@@ -15,118 +15,135 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Edudashboard report renderer
  *
- *
- * @package      local_edudashboard
+ * @package     local_edudashboard
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 /**
  * Edudashboard report renderer
  */
 class local_edudashboard_renderer extends plugin_renderer_base {
     /**
-     * Renders the couse bundle view page.
-     * @param  \local_edudashboard\output\edudashboard_renderable $report Object of EDUDashboard Reports renderable class
-     * @return string  Html Structure of the view page
+     * Renders the course bundle view page.
+     *
+     * @param \local_edudashboard\output\edudashboard_renderable $report Object of EDUDashboard Reports renderable class
+     * @return string Html Structure of the view page
      */
     public function render_edudashboard(\local_edudashboard\output\edudashboard_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/edudashboard', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the categories overview report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\categoriesoverview_renderable $report The categories overview renderable object
+     * @return string Html structure of the categories overview report
      */
     public function render_categoriesoverview(\local_edudashboard\output\categoriesoverview_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/categoriesoverview', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the site overview report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\siteoverview_renderable $report The site overview renderable object
+     * @return string Html structure of the site overview report
      */
     public function render_siteoverview(\local_edudashboard\output\siteoverview_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/siteoverview', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the student course overview report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\studentcourseoverview_renderable $report The student course overview renderable object
+     * @return string Html structure of the student course overview report
      */
     public function render_studentcourseoverview(\local_edudashboard\output\studentcourseoverview_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/studentcourseoverview', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the site completion report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\sitecompletion_renderable $report The site completion renderable object
+     * @return string Html structure of the site completion report
      */
     public function render_sitecompletion(\local_edudashboard\output\sitecompletion_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/sitecompletion', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the user dossier report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\userdossie_renderable $report The user dossier renderable object
+     * @return string Html structure of the user dossier report
      */
     public function render_userdossie(\local_edudashboard\output\userdossie_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/userdossie', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the user report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\userreport_renderable $report The user report renderable object
+     * @return string Html structure of the user report
      */
     public function render_userreport(\local_edudashboard\output\userreport_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/userreport', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the pages report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\pagesreport_renderable $report The pages report renderable object
+     * @return string Html structure of the pages report
      */
     public function render_pagesreport(\local_edudashboard\output\pagesreport_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         $templatename = $report->report_type === 'authentication' ? 'authenticationreport' : 'coursereport';
         return $this->render_from_template("local_edudashboard/$templatename", $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the user grade average report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\usergradeavg_renderable $report The user grade average renderable object
+     * @return string Html structure of the user grade average report
      */
     public function render_usergradeavg(\local_edudashboard\output\usergradeavg_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/usergradeavg', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the authentication report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\authentication_renderable $report The authentication renderable object
+     * @return string Html structure of the authentication report
      */
     public function render_authentication(\local_edudashboard\output\authentication_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/authentication', $templatecontext);
     }
+
     /**
-     * TODO.
+     * Renders the courses size report.
      *
-     * @return array Chart labels and dataset
+     * @param \local_edudashboard\output\coursessize_renderable $report The courses size renderable object
+     * @return string Html structure of the courses size report
      */
     public function render_coursessize(\local_edudashboard\output\coursessize_renderable $report) {
         $templatecontext = $report->export_for_template($this);
         return $this->render_from_template('local_edudashboard/coursessize', $templatecontext);
     }
-
-
 }
-

@@ -1,26 +1,61 @@
 {{!
-// This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-//
-/**
- * Plugin version and other meta-data are defined here.
- *
- * @package     local_edudashboard
- * @copyright   2025 edudigital <geral@edudigital-learn.com>
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+    /**
+     * Main template for the EDUdashboard plugin, displaying site statistics and blocks.
+     *
+     * @package     local_edudashboard
+     * @copyright   2025 edudigital <geral@edudigital-learn.com>
+     * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+     */
+
+    /**
+     * @template local_edudashboard_edudashboard
+     * @example {
+     *   "fastreport": true,
+     *   "users": 150,
+     *   "suspendedusers": 10,
+     *   "active_suspend_users": "Active / Suspended Users",
+     *   "courses": 25,
+     *   "courses_label": "Total Courses",
+     *   "completionpercent": 75,
+     *   "courses_conclusio_label": "Course Completion Rate",
+     *   "todaysusers": 50,
+     *   "authentications_today_label": "Authentications Today",
+     *   "wwwroot": "https://example.com/moodle",
+     *   "more_information": "More info",
+     *   "blocks": [
+     *     {"content": "<p>Block 1 content</p>"},
+     *     {"content": "<p>Block 2 content</p>"}
+     *   ],
+     *   "courses_size": [
+     *     {"content": "<p>Course size data</p>"}
+     *   ],
+     *   "crondisk": false,
+     *   "disk_space": "Disk Space: ",
+     *   "moodledata_size": "1.5 GB",
+     *   "disk_no_data": "No disk data available",
+     *   "showadmin": true,
+     *   "site_user_courses": [
+     *     {"content": "<p>User courses overview</p>"}
+     *   ],
+     *   "shou_config": true,
+     *   "configtext": "Configure EDUdashboard"
+     * }
+     */
 }}
 
 <div class="contain" style="padding-top:20px">

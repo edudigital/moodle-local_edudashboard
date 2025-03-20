@@ -489,8 +489,9 @@ class coursessize_renderable implements renderable, templatable {
     /**
      * Get data to chart rendering.
      *
-     *
-     * @return array Chart labels and dataset
+     * @param int $uid The user ID for filtering data
+     * @param bool $apexchart Whether to use ApexCharts format (optional, default false)
+     * @return stdClass Chart labels and dataset
      */
     private function getdatatochart($uid, $apexchart = false) {
 
@@ -535,12 +536,9 @@ class coursessize_renderable implements renderable, templatable {
     }
 
 }
-   /**
-    * Get courses size.
-    *
-    * @param array $courses Course data
-    * @return array Chart labels and dataset
-    */
+    /**
+     * Renderable class for pages report.
+     */
 class pagesreport_renderable implements renderable, templatable {
 
     /**
@@ -549,19 +547,19 @@ class pagesreport_renderable implements renderable, templatable {
     public $reporttype;
 
     /**
-     * TODO.
+     * Constructs the pages report renderable object.
      *
-     * @param array $courses Course data
-     * @return array Chart labels and dataset
+     * @param string $reporttype The type of report to render (default: 'course')
      */
     public function __construct($reporttype = 'course') {
         $this->report_type = $reporttype;
     }
-    /**
-     * TODO.
-     *
-     * @return array Chart labels and dataset
-     */
+     /**
+      * Exports data for template rendering.
+      *
+      * @param renderer_base $output The renderer object used for template rendering
+      * @return stdClass Data object for the template
+      */
     public function export_for_template(renderer_base $output) {
         $data = new stdClass();
         $data->premium_url = 'https://edudigital-learn.com/';
