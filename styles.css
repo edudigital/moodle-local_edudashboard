@@ -1,8 +1,201 @@
-@import url("/local/edudashboard/localstyles/adminlteblock.css");
-@import url("/local/edudashboard/localstyles/progressbar.css");
-@import url("/local/edudashboard/localstyles/chartjs.css");
 @import url("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
+.path-local-edudashboard .bg-info h3,.path-local-edudashboard .bg-success h3,.path-local-edudashboard .bg-danger h3,.path-local-edudashboard .bg-info>a,.path-local-edudashboard .bg-success>a,.bg-danger>a {
+    color: #fff !important;
+}
+.path-local-edudashboard .bg-info {
+    background-color: #17a2b8!important;
+    color: #fff !important;
+}
+.path-local-edudashboard .bg-success {
+    background-color: #28a745!important;
+    color: #fff !important;
+}
+.path-local-edudashboard .bg-warning {
+    background-color: #ffc107!important;
+}
+.path-local-edudashboard .bg-danger {
+    background-color: #dc3545!important;
+   color: #fff !important;
+}
+.path-local-edudashboard .small-box .icon {
+    font-size: inherit;
+}
 
+.path-local-edudashboard .small-box .icon {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    margin-right: 0.5rem;
+}
+.path-local-edudashboard .small-box {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+    
+}
+.path-local-edudashboard .bg-info {
+    background-color: #17a2b8!important;
+}
+.path-local-edudashboard .small-box>.inner {
+    padding: 10px;
+}
+@media (min-width: 1200px){
+    .path-local-edudashboard .col-lg-3 .small-box h3, .path-local-edudashboard .col-md-3 .small-box h3, .path-local-edudashboard .col-xl-3 .small-box h3 {
+    font-size: 2.2rem;
+}
+}
+@media (min-width: 992px){
+
+    .path-local-edudashboard .col-lg-3 .small-box h3, .path-local-edudashboard .col-md-3 .small-box h3, .path-local-edudashboard .col-xl-3 .small-box h3 {
+            font-size: 1.6rem;
+        }
+}
+.path-local-edudashboard .small-box h3, .path-local-edudashboard .small-box p {
+    z-index: 5;
+}
+.path-local-edudashboard .small-box h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    padding: 0;
+    white-space: nowrap;
+}
+.path-local-edudashboard .small-box h3, .path-local-edudashboard .small-box p {
+    z-index: 5;
+}
+.path-local-edudashboard .small-box p {
+    font-size: 12px;
+}
+
+.path-local-edudashboard sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    top: -0.2em;
+    font-size: 20px;
+    vertical-align: baseline;
+}
+.small-box h3, .small-box p {
+    z-index: 5;
+}
+
+.path-local-edudashboard .small-box h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 10px;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.path-local-edudashboard .small-box>.small-box-footer {
+    background-color: rgba(0,0,0,.1);
+    color: rgba(255,255,255,.8);
+    display: block;
+    padding: 3px 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+}
+
+.path-local-edudashboard .small-box .icon>i.ion {
+    font-size: 70px;
+    top: 20px;
+}
+
+.path-local-edudashboard .small-box .back-ic {
+    font-size: 70px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transition: -webkit-transform .3s linear;
+    transition: transform .3s linear;
+    transition: transform .3s linear,-webkit-transform .3s linear;
+}
+
+.path-local-edudashboard .small-box .icon {
+    color: rgba(0,0,0,.15);
+    z-index: 0;
+}
+.path-local-edudashboard .animate-blow{
+    transform: scale(1.11);
+}
+
+.path-local-edudashboard .path-local-edudashboard .progress-circle {
+    background-color: #ddd;
+    border-radius: 50%;
+    display: inline-block;
+    height: 6rem;
+    width: 6rem;
+    position: relative;
+}
+
+.path-local-edudashboard .path-local-edudashboard .progress-circle:before {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50%;
+    content: attr(data-progress) '%';
+    display: flex;
+    font-size: 1.2rem;
+    justify-content: center;
+    position: absolute;
+    left: 0.6rem;
+    right: 0.6rem;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    transition: -webkit-transform 0.2s ease;
+    transition: transform 0.2s ease;
+    transition: transform 0.2s ease,-webkit-transform 0.2s ease;
+}
+
+.path-local-edudashboard #siteacess-report rect{
+    stroke: black;
+    stroke-width: 0.3;
+}
+
+
+.path-local-edudashboard  .siteaccess-values-shade {
+    position: relative;
+    height: 2.5rem;
+    margin: 0 3.5rem 3rem 5rem;
+    display: flex;
+    align-items: center;
+}
+ .path-local-edudashboard .siteaccess-values-shade .siteaccess {
+    margin: 0;
+}
+
+.path-local-edudashboard  .siteaccess-values-shade .shades {
+    display: flex;
+    flex: 1;
+}
+
+.path-local-edudashboard  .siteaccess-values-shade .shades .shade {
+    height: 2rem;
+    padding: 0 0.2rem;
+}
+
+ .path-local-edudashboard .siteaccess-values-shade .shades .shade .shade-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.path-local-edudashboard canvas {
+    border: 0px dotted red; 
+  }
+  
+  .path-local-edudashboard .chart-container {
+      position: relative;
+      margin: auto;
+      height: 300px;
+      width: 100%;
+  }
+  
 .path-local-edudashboard #container {
 height: 400px;
 }
@@ -221,3 +414,8 @@ background-color: #c82333;
 .path-local-edudashboard .coursereport-content {
 margin-bottom: 20px;
 }
+
+
+
+
+.path-local-edudashboard .path-local-edudashboard .progress-circle[data-progress="1"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(93.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="2"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(97.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="3"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(100.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="4"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(104.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="5"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(108deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="6"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(111.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="7"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(115.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="8"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(118.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="9"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(122.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="10"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(126deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="11"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(129.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="12"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(133.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="13"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(136.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="14"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(140.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="15"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(144deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="16"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(147.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="17"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(151.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="18"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(154.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="19"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(158.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="20"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(162deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="21"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(165.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="22"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(169.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="23"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(172.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="24"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(176.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="25"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(180deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="26"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(183.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="27"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(187.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="28"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(190.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="29"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(194.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="30"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(198deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="31"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(201.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="32"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(205.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="33"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(208.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="34"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(212.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="35"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(216deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="36"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(219.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="37"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(223.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="38"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(226.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="39"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(230.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="40"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(234deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="41"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(237.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="42"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(241.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="43"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(244.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="44"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(248.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="45"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(252deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="46"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(255.6deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="47"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(259.2deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="48"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(262.8deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="49"]:after{background-image:linear-gradient(90deg,#ddd 50%,transparent 50%,transparent),linear-gradient(266.4deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="50"]:after{background-image:linear-gradient(-90deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="51"]:after{background-image:linear-gradient(-86.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="52"]:after{background-image:linear-gradient(-82.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="53"]:after{background-image:linear-gradient(-79.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="54"]:after{background-image:linear-gradient(-75.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="55"]:after{background-image:linear-gradient(-72deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="56"]:after{background-image:linear-gradient(-68.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="57"]:after{background-image:linear-gradient(-64.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="58"]:after{background-image:linear-gradient(-61.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="59"]:after{background-image:linear-gradient(-57.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="60"]:after{background-image:linear-gradient(-54deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="61"]:after{background-image:linear-gradient(-50.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="62"]:after{background-image:linear-gradient(-46.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="63"]:after{background-image:linear-gradient(-43.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="64"]:after{background-image:linear-gradient(-39.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="65"]:after{background-image:linear-gradient(-36deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="66"]:after{background-image:linear-gradient(-32.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="67"]:after{background-image:linear-gradient(-28.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="68"]:after{background-image:linear-gradient(-25.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="69"]:after{background-image:linear-gradient(-21.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="70"]:after{background-image:linear-gradient(-18deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="71"]:after{background-image:linear-gradient(-14.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="72"]:after{background-image:linear-gradient(-10.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="73"]:after{background-image:linear-gradient(-7.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="74"]:after{background-image:linear-gradient(-3.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="75"]:after{background-image:linear-gradient(0deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="76"]:after{background-image:linear-gradient(3.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="77"]:after{background-image:linear-gradient(7.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="78"]:after{background-image:linear-gradient(10.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="79"]:after{background-image:linear-gradient(14.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="80"]:after{background-image:linear-gradient(18deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="81"]:after{background-image:linear-gradient(21.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="82"]:after{background-image:linear-gradient(25.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="83"]:after{background-image:linear-gradient(28.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="84"]:after{background-image:linear-gradient(32.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="85"]:after{background-image:linear-gradient(36deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="86"]:after{background-image:linear-gradient(39.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="87"]:after{background-image:linear-gradient(43.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="88"]:after{background-image:linear-gradient(46.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="89"]:after{background-image:linear-gradient(50.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="90"]:after{background-image:linear-gradient(54deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="91"]:after{background-image:linear-gradient(57.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="92"]:after{background-image:linear-gradient(61.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="93"]:after{background-image:linear-gradient(64.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="94"]:after{background-image:linear-gradient(68.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="95"]:after{background-image:linear-gradient(72deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="96"]:after{background-image:linear-gradient(75.6deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="97"]:after{background-image:linear-gradient(79.2deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="98"]:after{background-image:linear-gradient(82.8deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="99"]:after{background-image:linear-gradient(86.4deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}.path-local-edudashboard .progress-circle[data-progress="100"]:after{background-image:linear-gradient(90deg,#0083ff 50%,transparent 50%,transparent),linear-gradient(270deg,#0083ff 50%,#ddd 50%,#ddd)}

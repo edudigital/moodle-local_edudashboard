@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
     /**
-     * Template for rendering a chart view using Chart.js.
+     * Template for displaying an authentication report with description, features, and premium notification.
      *
      * @package     local_edudashboard
      * @copyright   2025 edudigital <geral@edudigital-learn.com>
@@ -23,23 +23,36 @@
      */
 
     /**
-     * @template local_edudashboard_chartjsview
+     * @template local_edudashboard_authenticationreport
      * @example {
-     *   "labels": ["January", "February", "March"],
-     *   "datasets": [
-     *     {
-     *       "label": "Users",
-     *       "data": [50, 60, 45],
-     *       "backgroundColor": "rgba(54, 162, 235, 0.2)",
-     *       "borderColor": "rgba(54, 162, 235, 1)",
-     *       "borderWidth": 1
-     *     }
-     *   ]
+     *   "report_description": "This report tracks user authentication activity.",
+     *   "report_features": "Authentication Features",
+     *   "features_list": [
+     *     "Monitor login attempts",
+     *     "Track active users",
+     *     "Analyze authentication trends"
+     *   ],
+     *   "premium_url": "https://edudigital-learn.com/upgrade"
      * }
      */
 }}
 
-<div class="chart-container">
-    <canvas id="chart"></canvas>
+<div class="authenticationreport-content">
 </div>
 
+<div class="report-description">
+    <p>{{ report_description }}</p>
+    {{#report_features}}
+        <h3>{{ report_features }}</h3>
+    {{/report_features}}
+    <ul>
+        {{#features_list}}
+            <li>{{ . }}</li>
+        {{/features_list}}
+    </ul>
+</div>
+
+<div class="premium-notification">
+    <p>{{#str}} report_content, local_edudashboard {{/str}}</p>
+    <a href="{{ premium_url }}" class="premium-button">{{#str}} upgrade_premium, local_edudashboard {{/str}}</a>
+</div>

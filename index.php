@@ -83,7 +83,7 @@ foreach (scandir($CFG->dirroot . '/local/edudashboard/externaljs/build/apexchart
     $PAGE->requires->js(new moodle_url('/local/edudashboard/externaljs/build/apexchart/' . $file1), false);
 }
 
-$PAGE->requires->css('/local/edudashboard/styles.css');
+
 $renderable = new \local_edudashboard\output\edudashboard_renderable();
 $output = $PAGE->get_renderer($component)->render($renderable);
 
