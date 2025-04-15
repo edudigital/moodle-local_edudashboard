@@ -536,69 +536,6 @@ class coursessize_renderable implements renderable, templatable {
     }
 
 }
-    /**
-     * Renderable class for pages report.
-     */
-class pagesreport_renderable implements renderable, templatable {
 
-    /**
-     * @var array $courses Course data
-     */
-    public $reporttype;
 
-    /**
-     * Constructs the pages report renderable object.
-     *
-     * @param string $reporttype The type of report to render (default: 'course')
-     */
-    public function __construct($reporttype = 'course') {
-        $this->report_type = $reporttype;
-    }
-     /**
-      * Exports data for template rendering.
-      *
-      * @param renderer_base $output The renderer object used for template rendering
-      * @return stdClass Data object for the template
-      */
-    public function export_for_template(renderer_base $output) {
-        $data = new stdClass();
-        $data->premium_url = 'https://edudigital-learn.com/';
-
-        if ($this->report_type === 'authentication') {
-            $data->report_title = get_string('authentication_report_title', 'local_edudashboard');
-            $data->report_description = get_string('authentication_report_description', 'local_edudashboard');
-            $data->report_features = get_string('authentication_report_features', 'local_edudashboard');
-
-            $data->features_list = [
-                get_string('authentication_report_feature_users', 'local_edudashboard'),
-                get_string('authentication_report_feature_filter', 'local_edudashboard'),
-                get_string('authentication_report_feature_dates', 'local_edudashboard'),
-                get_string('authentication_report_feature_charts', 'local_edudashboard'),
-                get_string('authentication_report_feature_trends', 'local_edudashboard'),
-            ];
-
-            $data->premium_notification = get_string('premium_notification', 'local_edudashboard');
-            $data->upgrade_premium = get_string('upgrade_premium', 'local_edudashboard');
-
-            $data->report_content = get_string('authentication_report_description', 'local_edudashboard');
-
-        } else if ($this->report_type === 'course') {
-            $data->report_title = get_string('course_report_title', 'local_edudashboard');
-            $data->report_description = get_string('course_report_description', 'local_edudashboard');
-            $data->report_features = get_string('course_report_features', 'local_edudashboard');
-
-            $data->features_list = [
-                get_string('course_report_feature_enrolled', 'local_edudashboard'),
-                get_string('course_report_feature_completed', 'local_edudashboard'),
-                get_string('course_report_feature_completion_rate', 'local_edudashboard'),
-                get_string('course_report_feature_data_size', 'local_edudashboard'),
-            ];
-
-            $data->premium_notification = get_string('premium_notification', 'local_edudashboard');
-            $data->upgrade_premium = get_string('upgrade_premium', 'local_edudashboard');
-        }
-
-        return $data;
-    }
-}
 

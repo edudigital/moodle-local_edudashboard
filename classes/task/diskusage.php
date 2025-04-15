@@ -38,7 +38,7 @@ class diskusage extends \core\task\scheduled_task {
      * @return string The name of the task
      */
     public function get_name() {
-        return "EDUdashboard disk usage task";
+        return get_string('disk_usage', 'local_edudashboard');
     }
 
     /**

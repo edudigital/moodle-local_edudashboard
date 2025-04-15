@@ -49,8 +49,6 @@ $PAGE->set_title(get_string('course_report', $component));
 $PAGE->navbar->add(get_string("main_name", $component), new moodle_url('/local/edudashboard/index.php'));
 $PAGE->navbar->add(get_string('course_report', $component));
 
-$PAGE->requires->css('/local/edudashboard/styles.css');
-
 $renderable = new \local_edudashboard\output\pagesreport_renderable();
 
 $renderer = $PAGE->get_renderer('local_edudashboard');

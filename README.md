@@ -27,7 +27,7 @@ EDUdashboard is a powerful plugin for Moodle that provides detailed graphical re
 
 ## Requirements
 
-- Moodle **4.0+** (compatible with Moodle 4.x)
+- Moodle **3.0+** (compatible with Moodle 4.x)
 - PHP **7.4+**
 - Database: MySQL / PostgreSQL
 
@@ -49,10 +49,14 @@ EDUdashboard is a powerful plugin for Moodle that provides detailed graphical re
 For issues, feature requests, or contributions, please visit our GitHub repository:
 [GitHub Repository](https://github.com/edudigital/moodle-local_edudashboard)
 
+## Acknowledgements
+
+This plugin was developed by taking inspiration from various existing Moodle plugins, including the reporting solutions provided by the Edwiser team. We are grateful for the open-source community and the contributions of other developers, which have helped shape the features and functionality of EDUdashboard.
+
 ## License
 
 This plugin is licensed under the **GPL v3** license.
 
 ![EDUdigital](pix/Logotipo_EDUdigital.png)
 
-&copy; 2024 EduDigital. All rights reserved.
+© 2024 EduDigital. All rights reserved.

@@ -112,7 +112,8 @@ class course_report {
                 continue;
             }
 
-            $course->size_f = isset($coursessize[$course->id]) ? self::datasizeformater($course->size) : "Não calculado";
+            $course->size_f = isset($coursessize[$course->id]) ? self::datasizeformater($course->size) : get_string
+            ('coursessizeC', 'local_edudashboard');
             $userpicked = get_enrolled_users(context_course::instance(intval($course->id)), null, null,
                 "u.id,u.firstname,u.email, u.lastname", "u.firstname ASC");
 

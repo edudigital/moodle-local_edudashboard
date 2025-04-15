@@ -19,4 +19,24 @@
         <homepage>https://www.chartjs.org/</homepage>
         <source>https://github.com/chartjs/Chart.js</source>
     </library>
+
+    <library>
+        <name>Bootstrap Grid</name>
+        <version>4.1.3</version>
+        <license>MIT</license>
+        <location>/externaljs/build/bootstrap-grid</location>
+        <licenseurl>https://github.com/twbs/bootstrap/blob/v4.1.3/LICENSE</licenseurl>
+        <homepage>https://getbootstrap.com/</homepage>
+        <source>https://github.com/twbs/bootstrap</source>
+    </library>
+
+    <library>
+        <name>Highcharts JS</name>
+        <version>10.1.0</version>
+        <license>Commercial</license>
+        <location>/externaljs/build/highcharts</location>
+        <licenseurl>https://www.highcharts.com/license</licenseurl>
+        <homepage>https://www.highcharts.com/</homepage>
+        <source>https://github.com/highcharts/highcharts</source>
+    </library>
 </thirdparty>

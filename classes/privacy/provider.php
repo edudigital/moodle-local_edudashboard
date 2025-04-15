@@ -23,27 +23,21 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
- require_once('../../config.php');
- global $CFG, $OUTPUT, $PAGE;
 
- $context = context_system::instance();
- $component = "local_edudashboard";
+use core_privacy\local\metadata\null_provider;
 
- require_login();
- require_capability('local/edudashboard:view', $context);
 
- $pageurl = new moodle_url('/local/edudashboard/authenticationreport.php');
- $PAGE->set_context($context);
- $PAGE->set_url($pageurl);
- $PAGE->set_pagelayout('standard');
+/**
+ * Privacy provider for the local_edudashboard plugin.
+ */
+class provider implements null_provider {
 
- $PAGE->set_title(get_string('authentication_report', $component));
- $PAGE->navbar->add(get_string("main_name", $component), new moodle_url('/local/edudashboard/index.php'));
- $PAGE->navbar->add(get_string('authentication_report', $component));
-
- $renderable = new \local_edudashboard\output\pagesreport_renderable('authentication');
- $renderer = $PAGE->get_renderer('local_edudashboard');
-
- echo $OUTPUT->header();
- echo $renderer->render_pagesreport($renderable);
- echo $OUTPUT->footer();
+    /**
+     *  Returns the reason why this plugin does not store personal data.
+     *
+     * @return string
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
+    }
+}
