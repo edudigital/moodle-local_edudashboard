@@ -12,7 +12,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle. If not, see <http://www.gnu.org/licenses/>.
 
 /**
  * Plugin administration pages are defined here.
@@ -22,7 +22,6 @@
  * @copyright   2025 edudigital <geral@edudigital-learn.com>
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 require_once('../../config.php');
 require_once($CFG->dirroot . '/local/edudashboard/classes/output/renderable.php');
@@ -49,7 +48,7 @@ $PAGE->set_title(get_string('course_report', $component));
 $PAGE->navbar->add(get_string("main_name", $component), new moodle_url('/local/edudashboard/index.php'));
 $PAGE->navbar->add(get_string('course_report', $component));
 
-$renderable = new \local_edudashboard\output\pagesreport_renderable();
+$renderable = new \local_edudashboard\output\pagesreport_renderable('course');
 
 $renderer = $PAGE->get_renderer('local_edudashboard');
 

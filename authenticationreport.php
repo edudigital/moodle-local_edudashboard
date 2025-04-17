@@ -47,3 +47,4 @@
  echo $OUTPUT->header();
  echo $renderer->render_pagesreport($renderable);
  echo $OUTPUT->footer();
+ 

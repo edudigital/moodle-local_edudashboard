@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
+ * Renderable class for pages report.
  *
  * @package     local_edudashboard
  * @category    admin
@@ -36,15 +36,15 @@ class pagesreport_renderable implements renderable, templatable {
     /**
      * @var string The type of report to render
      */
-    public $reportype;
+    public $report_type;
 
     /**
      * Constructs the pages report renderable object.
      *
-     * @param string $reportype The type of report to render (default: 'course')
+     * @param string $report_type The type of report to render (default: 'course')
      */
-    public function __construct($reportype = 'course') {
-        $this->reportype = $reportype;
+    public function __construct($report_type = 'course') {
+        $this->report_type = $report_type;
     }
 
     /**
@@ -57,7 +57,7 @@ class pagesreport_renderable implements renderable, templatable {
         $data = new stdClass();
         $data->premium_url = 'https://edudigital-learn.com/';
 
-        if ($this->reportype === 'authentication') {
+        if ($this->report_type === 'authentication') {
             $data->report_title = get_string('authentication_report_title', 'local_edudashboard');
             $data->report_description = get_string('authentication_report_description', 'local_edudashboard');
             $data->report_features = get_string('authentication_report_features', 'local_edudashboard');
@@ -74,7 +74,7 @@ class pagesreport_renderable implements renderable, templatable {
             $data->upgrade_premium = get_string('upgrade_premium', 'local_edudashboard');
 
             $data->report_content = get_string('authentication_report_description', 'local_edudashboard');
-        } else if ($this->reportype === 'course') {
+        } else {
             $data->report_title = get_string('course_report_title', 'local_edudashboard');
             $data->report_description = get_string('course_report_description', 'local_edudashboard');
             $data->report_features = get_string('course_report_features', 'local_edudashboard');
@@ -93,3 +93,4 @@ class pagesreport_renderable implements renderable, templatable {
         return $data;
     }
 }
+
