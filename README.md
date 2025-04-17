@@ -37,6 +37,7 @@ EDUdashboard is a powerful plugin for Moodle that provides detailed graphical re
 2. Select the type of report you wish to generate.
 3. Filter data based on time range, user roles, and course categories.
 4. Export reports in CSV or PDF format for further analysis.
+5.Access the plugin directly via the URL: {your_moodle_url}/local/edudashboard/. For example, if your Moodle site is hosted at http://example.com/moodle, visit http://example.com/moodle/local/edudashboard/ to view the EDUdashboard interface.
 
 ## Security & Performance
 

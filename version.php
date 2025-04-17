@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_edudashboard';
 $plugin->release = '1.0';
-$plugin->version = 2025010100;
+$plugin->version = 2025170401;
 $plugin->requires = 2022041912;
 $plugin->maturity = MATURITY_STABLE;
