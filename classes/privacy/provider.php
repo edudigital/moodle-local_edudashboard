@@ -38,6 +38,6 @@ class provider implements null_provider {
      * @return string
      */
     public static function get_reason(): string {
-        return 'privacy:metadata';
+        return get_string('privacy_metadata', 'local_edudashboard');
     }
 }
