@@ -110,7 +110,7 @@ class local_edudashboard_renderer extends plugin_renderer_base {
      */
     public function render_pagesreport(\local_edudashboard\output\pagesreport_renderable $report) {
         $templatecontext = $report->export_for_template($this);
-        $templatename = $report->report_type === 'authentication' ? 'authenticationreport' : 'coursereport';
+        $templatename = $report->reportype === 'authentication' ? 'authenticationreport' : 'coursereport';
         return $this->render_from_template("local_edudashboard/$templatename", $templatecontext);
     }
 
