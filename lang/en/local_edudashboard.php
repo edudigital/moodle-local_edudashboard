@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
+
  *
  * @package     local_edudashboard
  * @category    admin
@@ -142,13 +142,19 @@ $string['nocourses'] = 'Data unavailable. Not enrolled in any course';
 $string['pluginname'] = 'EDUDashboard';
 $string['premium_notification'] = 'This feature is only available in the premium version of Edudashboard.';
 $string['printChart'] = 'Print chart';
-$string['privacy:metadata'] = 'The EDUdashboard plugin does not store any personal data.';
+$string['privacy:metadata'] = 'The EDUdashboard plugin does not store personal data but accesses user, course, and log data managed by Moodle core subsystems.';
+$string['privacy:metadata:core_completion'] = 'The core completion subsystem manages data related to course and activity completion.';
+$string['privacy:metadata:core_course'] = 'The core course subsystem manages course data, including enrollments and course completions.';
+$string['privacy:metadata:core_logstore'] = 'The core logstore subsystem manages logs of user activities, such as logins and actions.';
+$string['privacy:metadata:core_role'] = 'The core role subsystem manages data related to user roles and permissions.';
+$string['privacy:metadata:core_user'] = 'The core user subsystem manages user data such as names, emails, and preferences.';
 $string['program'] = ' Program';
 $string['progress_course'] = 'Progress';
 $string['progress_label_course_report'] = 'Progress';
 $string['registered_date_course'] = 'Enrollment date';
 $string['registered_label_course_report'] = 'Enrollment';
 $string['report_content'] = 'This feature is only available in the premium version of Edudashboard.';
+$string['role_based_access'] = 'Role-Based Access Data';
 $string['sat'] = 'SAT';
 $string['saturday'] = 'Saturday';
 $string['selectedcourse'] = 'Selected course';
@@ -222,4 +228,3 @@ $string['wed'] = 'WED';
 $string['wedsday'] = 'Wednesday';
 $string['whitout_data'] = 'No data to show';
 $string['without_data'] = 'No data to show';
-
